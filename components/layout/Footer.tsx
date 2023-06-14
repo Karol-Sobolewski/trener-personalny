@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <div className="flex justify-center text-white sm:justify-start">
+            <div className="flex justify-center text-red-500 dark:text-white sm:justify-start">
               <svg
                 className="h-8"
                 viewBox="0 0 118 24"
@@ -67,7 +67,7 @@ export default function Footer() {
                   href="/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-white transition hover:text-red-600/75 "
+                  className="text-red-500 transition hover:text-red-500/75 dark:text-white dark:hover:text-white/75"
                 >
                   <span className="sr-only">Facebook</span>
                   <svg
@@ -90,7 +90,7 @@ export default function Footer() {
                   href="/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-white transition hover:text-red-600/75"
+                  className="text-red-500 transition hover:text-red-500/75 dark:text-white dark:hover:text-white/75"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -224,7 +224,7 @@ export default function Footer() {
                       />
                     </svg>
 
-                    <span className="flex-1 text-gray-700 dark:text-gray-300 dark:hover:text-gray-400/75">
+                    <span className="flex-1 text-gray-700 dark:text-gray-300 hover:text-gray-700/75 dark:hover:text-gray-400/75">
                       radek.senski@gmail.com
                     </span>
                   </a>
@@ -250,7 +250,7 @@ export default function Footer() {
                       />
                     </svg>
 
-                    <span className="flex-1 text-gray-700 dark:text-gray-300 dark:hover:text-gray-400/75">
+                    <span className="flex-1 text-gray-700 hover:text-gray-700/75 dark:text-gray-300 dark:hover:text-gray-400/75">
                       669958538
                     </span>
                   </a>
@@ -277,7 +277,7 @@ export default function Footer() {
                     />
                   </svg>
 
-                  <address className="-mt-0.5 flex-1 not-italic text-gray-700 dark:text-gray-300 dark:hover:text-gray-400/75">
+                  <address className="-mt-0.5 flex-1 not-italic text-gray-700 hover:text-gray-700/75 dark:text-gray-300 dark:hover:text-gray-400/75">
                     <a href="">
                       Adres1, Adres2, <br /> 00-001 Warszawa
                     </a>
