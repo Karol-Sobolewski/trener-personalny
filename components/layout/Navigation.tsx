@@ -1,13 +1,76 @@
 import Link from "next/link";
-import { ReactNode } from "react";
-import Footer from "./Footer";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState, SyntheticEvent } from "react";
+import styles from "./Navigation.module.scss";
+
 export default function Navigation() {
+  const [animateHeader, setAnimateHeader] = useState(false);
+  const [isMenuVisible, toggleMenuVisibility] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const listener = () => {
+      if (window.scrollY > 140) {
+        setAnimateHeader(true);
+      } else setAnimateHeader(false);
+    };
+    window.addEventListener("scroll", listener);
+    if (window.scrollY > 140) {
+      setAnimateHeader(true);
+    } else setAnimateHeader(false);
+    return () => {
+      window.removeEventListener("scroll", listener);
+    };
+  }, []);
+
+  const router = useRouter();
+
+  const menuItems = [
+    { title: "O mnie", url: "/omnie" },
+    { title: "Blog", url: "/blog" },
+    { title: "Kontakt", url: "/kontakt" },
+  ];
+
+  useEffect(() => {
+    const Navigation = document.getElementById(`menu`);
+    if (Navigation) {
+      if (isMenuVisible) {
+        // Navigation.style.transform = `translateX(-50%)`;
+      } else {
+        // Navigation.style.transform = `translateX(0)`;
+      }
+    }
+    console.log(`pathname`, router.pathname);
+  }, [isMenuVisible]);
+
+  const useOutsideMenu = (ref: React.RefObject<HTMLInputElement>) => {
+    useEffect(() => {
+      function handleClickOutside(e: MouseEvent) {
+        const target = e.target as Node;
+        if (ref.current && !ref.current.contains(target)) {
+          console.log(`false`);
+          toggleMenuVisibility(false);
+        }
+      }
+      document.addEventListener(`mousedown`, handleClickOutside);
+      return () => {
+        document.removeEventListener(`mousedown`, handleClickOutside);
+      };
+    }, [ref]);
+  };
+
+  useOutsideMenu(menuRef);
+
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="flex h-16 items-center justify-between">
+    <div
+      className={`px-4 sm:px-6 lg:px-8 w-full fixed top-0 z-50 ease-in-out duration-500  ${
+        animateHeader && "md:py-4 bg-white shadow-xl dark:bg-slate-700"
+      }`}
+    >
+      <div className="flex h-16 items-center justify-between" ref={menuRef}>
         <div className="flex-1 md:flex md:items-center md:gap-12">
-          <Link className="block text-red-500 dark:text-white" href="/">
-            <span className="sr-only">Home</span>
+          <span className="sr-only">Strona główna</span>
+          <Link className="block text-red-600 dark:text-white" href="/">
             <svg
               className="h-8"
               viewBox="0 0 28 24"
@@ -22,37 +85,86 @@ export default function Navigation() {
           </Link>
         </div>
 
-        <div className="md:flex md:items-center md:gap-12">
-          <nav aria-label="Global" className="hidden md:block">
-            <ul className="flex items-center gap-6 text-sm">
-              <li>
+        <div className="flex items-center gap-12">
+          <nav
+            aria-label="Global"
+            className={`${
+              isMenuVisible ? styles.menu : styles.menu__hidden
+            } bg-white dark:bg-slate-700 md:bg-inherit md:block duration-500`}
+          >
+            <ul className="flex items-center gap-6 text-sm ">
+              <li className="md:hidden">
                 <Link
-                  className="text-gray-500 transition hover:text-gray-500/75 dark:text-white hover:text-gray-400"
-                  href="/omnie"
+                  className={` dark:text-white dark:hover:text-white/75 font-bold ease-in-out duration-500 
+                  ${
+                    router.pathname === "/"
+                      ? animateHeader
+                        ? "text-gray-700 hover:text-gray-700/75 "
+                        : "text-white hover:text-white/75 "
+                      : "text-gray-700 hover:text-gray-700/75 "
+                  }`}
+                  href="/"
+                  onClick={() => toggleMenuVisibility(false)}
                 >
-                  O mnie
+                  Strona główna
                 </Link>
               </li>
-
-              <li>
-                <Link
-                  className="text-gray-500 transition hover:text-gray-500/75 dark:text-white hover:text-gray-400"
-                  href="/blog"
-                >
-                  Blog
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-gray-500 transition hover:text-gray-500/75 dark:text-white hover:text-gray-400"
-                  href="/kontakt"
-                >
-                  Kontakt
-                </Link>
-              </li>
+              {menuItems.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    className={`font-bold ease-in-out duration-50 dark:text-white dark:hover:text-white/75
+                     ${
+                       router.pathname === "/"
+                         ? animateHeader
+                           ? "text-gray-700 hover:text-gray-700/75 "
+                           : "text-white hover:text-white/75 "
+                         : "text-gray-700 hover:text-gray-700/75 "
+                     }`}
+                    href={item.url}
+                    onClick={() => toggleMenuVisibility(false)}
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
+          <button
+            onClick={() => toggleMenuVisibility(!isMenuVisible)}
+            className="block rounded bg-white p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden z-10"
+          >
+            <span className="sr-only">Toggle menu</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            {/* <div>
+              <button className="relative group">
+                <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                  <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+                    <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
+                    <div className="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
+                    <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
+
+                    <div className="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
+                      <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
+                      <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div> */}
+          </button>
         </div>
       </div>
     </div>
