@@ -3,15 +3,14 @@ import Main from "../layout/Main";
 
 export default function WhoAmI() {
   return (
-    // <div className="flex items-center justify-center">
     <div className="min-h-screen sm:grid sm:grid-cols-2">
       <div className="p-8 md:p-12 lg:px-16 lg:py-24 flex">
         <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right flex flex-col justify-center align-middle">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">
+          <h2 className="text-2xl font-bold text-gray-900  md:text-3xl">
             Czym różnię się od innych?
           </h2>
 
-          <p className="text-gray-500 dark:text-gray-100">
+          <p className="text-gray-500 text-justify">
             <br /> Ja NIE gwarantuję Ci świetnych wyników, w&nbsp;prosty
             i&nbsp;przyjemny sposób bez zaangażowania i&nbsp;bez wysiłku.
             Gwarantuję Ci za to najlepsze możliwe narzędzia do osiągnięcia
@@ -23,7 +22,7 @@ export default function WhoAmI() {
             resztą zajmę się ja.
           </p>
           {/* <span className="font-bold text-red-500"></span> */}
-          <p className="text-gray-500 md:mt-4 dark:text-gray-100 italic font-semibold text-xl">
+          <p className="text-red-700  dark:text-red-300 md:mt-4 italic font-semibold text-xl">
             „Nie potrzebujesz talentu, żeby ciężko pracować”
           </p>
         </div>
@@ -33,10 +32,8 @@ export default function WhoAmI() {
         src="/images/about.webp"
         width={1920}
         height={1080}
-        className="h-56 w-full object-cover sm:h-full"
+        className="h-56 w-full object-cover sm:h-full rounded-md shadow-lg"
       />
     </div>
-
-    // </div>
   );
 }

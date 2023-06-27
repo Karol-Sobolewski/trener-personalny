@@ -5,6 +5,7 @@ import Link from "next/link";
 import Main from "../components/layout/Main";
 import WhoAmI from "../components/about/WhoAmI";
 import WhyMe from "../components/about/WhyMe";
+import ContactForm from "../components/ContactForm";
 
 export default function About() {
   return (
@@ -18,6 +19,7 @@ export default function About() {
       <Main>
         <WhoAmI />
         <WhyMe />
+        <ContactForm />
       </Main>
     </>
   );

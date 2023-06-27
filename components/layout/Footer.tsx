@@ -3,11 +3,11 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-white  dark:bg-slate-700">
+    <footer className="bg-gray-50 ">
       <div className="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <div className="flex justify-center text-red-500 dark:text-white sm:justify-start">
+            <div className="flex justify-center text-red-600  dark:text-red-200 sm:justify-start">
               <svg
                 className="h-8"
                 viewBox="0 0 118 24"
@@ -57,18 +57,17 @@ export default function Footer() {
               </svg>
             </div>
 
-            <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left dark:text-gray-300">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-              consequuntur amet culpa cum itaque neque.
+            <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
+              Całe moje życie to sport.
             </p>
 
             <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
-              <li>
+              {/* <li>
                 <a
                   href="/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-red-500 transition hover:text-red-500/75 dark:text-white dark:hover:text-white/75"
+                  className="text-red-700 dark:text-red-600  transition hover:text-red-700/75 hover:dark:text-red-600/75 hover:shadow-lg"
                 >
                   <span className="sr-only">Facebook</span>
                   <svg
@@ -84,14 +83,14 @@ export default function Footer() {
                     />
                   </svg>
                 </a>
-              </li>
+              </li> */}
 
               <li>
                 <a
                   href="https://www.instagram.com/radek.senski/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-red-500 transition hover:text-red-500/75 dark:text-white dark:hover:text-white/75"
+                  className="text-red-700 transition   hover:text-red-700/75 hover:shadow-lg  hover:dark:text-red-500/75 dark:text-red-200"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -113,14 +112,12 @@ export default function Footer() {
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
             <div className="text-center sm:text-left">
-              <p className="text-lg font-medium text-gray-900 dark:text-gray-100">
-                O Mnie
-              </p>
+              <p className="text-lg font-medium text-gray-900">O Mnie</p>
 
               <ul className="mt-8 space-y-4 text-sm">
                 <li>
                   <Link
-                    className="text-gray-700 transition hover:text-gray-700/75 dark:hover:text-gray-400/75 dark:text-gray-300 "
+                    className="text-gray-700 transition hover:text-gray-700/75 "
                     href="/omnie"
                   >
                     Kim jestem?
@@ -129,7 +126,7 @@ export default function Footer() {
 
                 <li>
                   <Link
-                    className="text-gray-700 transition hover:text-gray-700/75 dark:hover:text-gray-400/75 dark:text-gray-300"
+                    className="text-gray-700 transition hover:text-gray-700/75"
                     href="/omnie/#dlaczegoja"
                   >
                     Dlaczego ja?
@@ -139,15 +136,13 @@ export default function Footer() {
             </div>
 
             <div className="text-center sm:text-left">
-              <p className="text-lg font-medium text-gray-900 dark:text-gray-100">
-                Oferta
-              </p>
+              <p className="text-lg font-medium text-gray-900">Oferta</p>
 
               <ul className="mt-8 space-y-4 text-sm">
                 <li>
                   <a
-                    className="text-gray-700 transition hover:text-gray-700/75 dark:hover:text-gray-400/75 dark:text-gray-300"
-                    href="/"
+                    className="text-gray-700 transition hover:text-gray-700/75"
+                    href="/wspolpraca"
                   >
                     Współpraca
                   </a>
@@ -155,8 +150,17 @@ export default function Footer() {
 
                 <li>
                   <a
-                    className="text-gray-700 transition hover:text-gray-700/75 dark:hover:text-gray-400/75 dark:text-gray-300"
-                    href="/"
+                    className="text-gray-700 transition hover:text-gray-700/75 "
+                    href="/wspolpraca/#treningi-personalne"
+                  >
+                    Treningi personalne
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    className="text-gray-700 transition hover:text-gray-700/75"
+                    href="/wspolpraca/#plany-treningowe"
                   >
                     Plany treningowe
                   </a>
@@ -164,15 +168,15 @@ export default function Footer() {
 
                 <li>
                   <a
-                    className="text-gray-700 transition hover:text-gray-700/75 dark:hover:text-gray-400/75 dark:text-gray-300"
-                    href="/"
+                    className="text-gray-700 transition hover:text-gray-700/75 "
+                    href="/wspolpraca/#konsultacja"
                   >
-                    Plany żywieniowe
+                    Pojedyncza konsultacja
                   </a>
                 </li>
               </ul>
             </div>
-
+            {/* 
             <div className="text-center sm:text-left">
               <p className="text-lg font-medium text-gray-900 dark:text-gray-100">
                 Pomocne Linki
@@ -197,12 +201,10 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div className="text-center sm:text-left">
-              <p className="text-lg font-medium text-gray-900 dark:text-gray-100">
-                Kontakt
-              </p>
+              <p className="text-lg font-medium text-gray-900">Kontakt</p>
 
               <ul className="mt-8 space-y-4 text-sm">
                 <li>
@@ -212,7 +214,7 @@ export default function Footer() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 shrink-0 text-gray-900 dark:text-gray-300"
+                      className="h-5 w-5 shrink-0 text-gray-900"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -225,8 +227,8 @@ export default function Footer() {
                       />
                     </svg>
 
-                    <span className="flex-1 text-gray-700 dark:text-gray-300 hover:text-gray-700/75 dark:hover:text-gray-400/75">
-                      radek.senski@gmail.com
+                    <span className="flex-1 text-gray-700 hover:text-gray-700/75">
+                      kontakt@radeksenski.pl
                     </span>
                   </a>
                 </li>
@@ -238,7 +240,7 @@ export default function Footer() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 shrink-0 text-gray-900 dark:text-gray-300"
+                      className="h-5 w-5 shrink-0 text-gray-900"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -251,13 +253,13 @@ export default function Footer() {
                       />
                     </svg>
 
-                    <span className="flex-1 text-gray-700 hover:text-gray-700/75 dark:text-gray-300 dark:hover:text-gray-400/75">
+                    <span className="flex-1 text-gray-700 hover:text-gray-700/75">
                       669958538
                     </span>
                   </a>
                 </li>
 
-                <li className="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end">
+                {/* <li className="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 shrink-0 text-gray-900 dark:text-gray-300 "
@@ -283,7 +285,7 @@ export default function Footer() {
                       Adres1, Adres2, <br /> 00-001 Warszawa
                     </a>
                   </address>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -291,7 +293,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-gray-100 pt-6">
           <div className="text-center sm:flex sm:justify-between sm:text-left">
-            <p className="text-sm text-gray-500 dark:text-gray-300">
+            {/* <span className="text-sm text-gray-500 dark:text-gray-300">
               <a
                 className="inline-block text-gray-500 dark:text-gray-300  underline transition hover:text-gray-700/75 dark:hover:text-gray-400/75"
                 href="/"
@@ -307,9 +309,9 @@ export default function Footer() {
               >
                 Polityka prywatności
               </a>
-            </p>
+            </span> */}
 
-            <p className="mt-4 text-sm text-gray-500 dark:text-gray-300 sm:order-first sm:mt-0">
+            <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
               &copy; 2023. Designed & Coded by {` `}
               <a
                 className="hover:opacity-75 underline"

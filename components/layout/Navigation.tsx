@@ -2,10 +2,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState, SyntheticEvent } from "react";
 import styles from "./Navigation.module.scss";
+const nightwind = require("nightwind/helper");
+//@ts-ignore-next-line
+import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 export default function Navigation() {
   const [animateHeader, setAnimateHeader] = useState(false);
   const [isMenuVisible, toggleMenuVisibility] = useState(false);
+  const [isDarkMode, setDarkMode] = useState(false);
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -28,27 +32,15 @@ export default function Navigation() {
   const menuItems = [
     { title: "O mnie", url: "/omnie" },
     { title: "Blog", url: "/blog" },
+    { title: "Współpraca", url: "/wspolpraca" },
     { title: "Kontakt", url: "/kontakt" },
   ];
-
-  useEffect(() => {
-    const Navigation = document.getElementById(`menu`);
-    if (Navigation) {
-      if (isMenuVisible) {
-        // Navigation.style.transform = `translateX(-50%)`;
-      } else {
-        // Navigation.style.transform = `translateX(0)`;
-      }
-    }
-    console.log(`pathname`, router.pathname);
-  }, [isMenuVisible]);
 
   const useOutsideMenu = (ref: React.RefObject<HTMLInputElement>) => {
     useEffect(() => {
       function handleClickOutside(e: MouseEvent) {
         const target = e.target as Node;
         if (ref.current && !ref.current.contains(target)) {
-          console.log(`false`);
           toggleMenuVisibility(false);
         }
       }
@@ -61,16 +53,40 @@ export default function Navigation() {
 
   useOutsideMenu(menuRef);
 
+  useEffect(() => {
+    const isDarkSet = localStorage["nightwind-mode"] === "dark";
+    setDarkMode(isDarkSet);
+    const isThemeStored = "nightwind-mode" in localStorage;
+
+    const isDarkPreferred = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (isDarkSet || (!isThemeStored && isDarkPreferred)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  const toggleNightMode = () => {
+    setDarkMode(!isDarkMode);
+    nightwind.toggle(true);
+  };
+
   return (
     <div
       className={`px-4 sm:px-6 lg:px-8 w-full fixed top-0 z-50 ease-in-out duration-500  ${
-        animateHeader && "md:py-4 bg-white shadow-xl dark:bg-slate-700"
+        animateHeader && "md:py-4 bg-gray-50 shadow-xl"
       }`}
     >
       <div className="flex h-16 items-center justify-between" ref={menuRef}>
         <div className="flex-1 md:flex md:items-center md:gap-12">
           <span className="sr-only">Strona główna</span>
-          <Link className="block text-red-600 dark:text-white" href="/">
+          <Link
+            className="block text-red-600 hover:dark:text-red-500/75 dark:text-red-200"
+            href="/"
+          >
             <svg
               className="h-8"
               viewBox="0 0 28 24"
@@ -90,17 +106,17 @@ export default function Navigation() {
             aria-label="Global"
             className={`${
               isMenuVisible ? styles.menu : styles.menu__hidden
-            } bg-white dark:bg-slate-700 md:bg-inherit md:block duration-500`}
+            } bg-gray-50 md:bg-inherit md:dark:bg-inherit md:block duration-500`}
           >
             <ul className="flex items-center gap-6 text-sm ">
               <li className="md:hidden">
                 <Link
-                  className={` dark:text-white dark:hover:text-white/75 font-bold ease-in-out duration-500 
+                  className={` dark:text-gray-900 dark:hover:text-white/75 font-bold ease-in-out duration-500 
                   ${
                     router.pathname === "/"
                       ? animateHeader
                         ? "text-gray-700 hover:text-gray-700/75 "
-                        : "text-white hover:text-white/75 "
+                        : "md:text-white md:hover:text-white/75 "
                       : "text-gray-700 hover:text-gray-700/75 "
                   }`}
                   href="/"
@@ -112,12 +128,12 @@ export default function Navigation() {
               {menuItems.map((item, i) => (
                 <li key={i}>
                   <Link
-                    className={`font-bold ease-in-out duration-50 dark:text-white dark:hover:text-white/75
+                    className={`font-bold ease-in-out duration-50 dark: dark:text-gray-900 dark:hover:text-white/75
                      ${
                        router.pathname === "/"
                          ? animateHeader
                            ? "text-gray-700 hover:text-gray-700/75 "
-                           : "text-white hover:text-white/75 "
+                           : "md:text-white md:hover:text-white/75 "
                          : "text-gray-700 hover:text-gray-700/75 "
                      }`}
                     href={item.url}
@@ -127,11 +143,24 @@ export default function Navigation() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <DarkModeSwitch
+                  checked={isDarkMode}
+                  onChange={toggleNightMode}
+                  sunColor={
+                    router.pathname === "/"
+                      ? animateHeader
+                        ? "black"
+                        : "white"
+                      : "black"
+                  }
+                />
+              </li>
             </ul>
           </nav>
           <button
             onClick={() => toggleMenuVisibility(!isMenuVisible)}
-            className="block rounded bg-white p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden z-10"
+            className="block rounded bg-gray-50 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden z-10"
           >
             <span className="sr-only">Toggle menu</span>
             <svg
