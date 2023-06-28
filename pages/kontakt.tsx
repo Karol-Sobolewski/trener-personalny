@@ -10,7 +10,7 @@ export default function About() {
     <>
       <Head>
         <title>Kontakt</title>
-        <meta name="description" content="O mnie" />
+        <meta name="description" content="Kontakt" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -22,7 +22,7 @@ export default function About() {
                 Skontaktuj się ze&nbsp;mną
               </h2>
 
-              <p className="mt-4 text-gray-500 dark:text-gray-300 sm:text-xl">
+              <p className="mt-4 text-gray-500 sm:text-xl">
                 {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
                 dolores laborum labore provident impedit esse recusandae facere
                 libero harum sequi. */}
@@ -37,11 +37,11 @@ export default function About() {
                   target="_blank"
                   className="flex flex-col justify-center align-middle rounded-lg border border-gray-100 dark:border-slate-400 shadow-sm hover:shadow-md duration-300 cursor-pointer px-4 py-8 text-center bg-white dark:bg-inherit"
                 >
-                  <dt className="order-last text-2xl font-medium text-gray-500 dark:text-gray-300 pt-4">
+                  <dt className="order-last text-2xl font-medium text-gray-500 pt-4">
                     669958538
                   </dt>
 
-                  <dd className="text-4xl font-extrabold text-red-700 dark:text-red-500 md:text-5xl flex flex-col justify-center items-center">
+                  <dd className="text-4xl font-extrabold text-red-700 dark:text-red-200 md:text-5xl flex flex-col justify-center items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -63,11 +63,11 @@ export default function About() {
                   target="_blank"
                   className="flex flex-col justify-center align-middle rounded-lg border border-gray-100 dark:border-slate-400  shadow-sm hover:shadow-md duration-300 cursor-pointer px-4 py-8 text-center bg-white dark:bg-inherit"
                 >
-                  <dt className="order-last text-2xl font-medium text-gray-500 pt-4 dark:text-gray-300">
+                  <dt className="order-last text-2xl font-medium text-gray-500 pt-4">
                     kontakt@radeksenski.pl
                   </dt>
 
-                  <dd className="text-4xl font-extrabold text-red-700 dark:text-red-500 md:text-5xl flex flex-col justify-center items-center">
+                  <dd className="text-4xl font-extrabold text-red-700 dark:text-red-200 md:text-5xl flex flex-col justify-center items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -86,11 +86,11 @@ export default function About() {
                   title="Instagram"
                   className="flex flex-col justify-center align-middle rounded-lg border border-gray-100 dark:border-slate-400  shadow-sm hover:shadow-md duration-300 cursor-pointer px-4 py-8 text-center bg-white dark:bg-inherit"
                 >
-                  <dt className="order-last text-2xl font-medium text-gray-500 pt-4 dark:text-gray-300">
+                  <dt className="order-last text-2xl font-medium text-gray-500 pt-4">
                     Radek Senski
                   </dt>
 
-                  <dd className="text-4xl font-extrabold text-red-700 dark:text-red-500 md:text-5xl flex flex-col justify-center items-center">
+                  <dd className="text-4xl font-extrabold text-red-700 dark:text-red-200 md:text-5xl flex flex-col justify-center items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
