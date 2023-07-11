@@ -6,31 +6,46 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import emailjs from "emailjs-com";
 import styles from "./ContactForm.module.scss";
+import { useRef, useState } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useRecaptcha } from "react-hook-recaptcha";
 
 export default function ContactForm() {
-  const contactFormSchema = yup.object({
-    firstName: yup.string().required("Podaj imię").max(254, "Zbyt długa nazwa"),
-    lastName: yup
-      .string()
-      .required("Podaj nazwisko")
-      .max(254, "Zbyt długa nazwa"),
-    email: yup
-      .string()
-      .email("Podaj poprawny adres email")
-      .required("Adres email jest wymagany")
-      .max(254, "Zbyt długa nazwa"),
-    phone: yup
-      .string()
-      .phone("PL", "Podaj poprawny numer telefonu")
-      .nullable()
-      .notRequired(),
+  const [token, setToken] = useState<string | null>(null);
+  const captchaRef = useRef<HCaptcha>(null);
+  const hCaptchaSiteKey = "1d32eb16-521e-4c05-97f2-b4213ac0c29a";
 
-    message: yup
-      .string()
-      .required("Podaj wiadomość")
-      .min(50, "Zbyt krótka wiadomość")
-      .max(1000, "Zbyt długa wiadomość"),
-  });
+  const contactFormSchema = yup
+    .object({
+      firstName: yup
+        .string()
+        .required("Podaj imię")
+        .max(254, "Zbyt długa nazwa"),
+      lastName: yup
+        .string()
+        .required("Podaj nazwisko")
+        .max(254, "Zbyt długa nazwa"),
+      email: yup
+        .string()
+        .email("Podaj poprawny adres email")
+        .required("Adres email jest wymagany")
+        .max(254, "Zbyt długa nazwa"),
+      phone: yup
+        .string()
+        .phone("PL", "Podaj poprawny numer telefonu")
+        .nullable()
+        .defined()
+        .when("PHONE", {
+          is: (val: string) => val && val.length > 0,
+          then: (schema) => schema.required(),
+        }),
+      message: yup
+        .string()
+        .required("Podaj wiadomość")
+        .min(50, "Zbyt krótka wiadomość")
+        .max(1000, "Zbyt długa wiadomość"),
+    })
+    .required();
 
   type CheckoutFormData = yup.InferType<typeof contactFormSchema>;
 
@@ -53,25 +68,32 @@ export default function ContactForm() {
   };
 
   const onSubmit = handleSubmit(async (data) => {
-    reset();
-    try {
-      const templateParams = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        phone: data.phone,
-        email: data.email,
-        message: data.message,
-      };
+    if (captchaRef.current) {
+      captchaRef.current.execute();
+      if (token) {
+        console.log(`hCaptcha Token: ${token}`);
+        console.log({ data });
+        try {
+          const templateParams = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            phone: data.phone,
+            email: data.email,
+            message: data.message,
+          };
 
-      const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+          const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+          const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+          const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
 
-      // await emailjs.send(serviceID, templateID, templateParams, userId);
-      reset();
-      toastifySuccess();
-    } catch (e) {
-      console.log(`status:`, e);
+          // await emailjs.send(serviceID, templateID, templateParams, userId);
+          toastifySuccess();
+
+          reset();
+        } catch (e) {
+          console.log(`status:`, e);
+        }
+      }
     }
   });
 
@@ -179,7 +201,15 @@ export default function ContactForm() {
               </span>
             </div>
             <div className="col-span-6 flex align-middle justify-center w-full">
+              <HCaptcha
+                sitekey={hCaptchaSiteKey}
+                onVerify={setToken}
+                ref={captchaRef}
+              />
+            </div>
+            <div className="col-span-6 flex align-middle justify-center w-full">
               <button
+                disabled={!token}
                 type="submit"
                 className="block rounded-md bg-red-700 p-4 text-sm text-gray-100 font-bold transition hover:shadow-lg hover:bg-red-700/75 hover:dark:bg-red-500/75 dark:bg-red-200 dark:text-gray-900"
               >
