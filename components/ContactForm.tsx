@@ -36,7 +36,7 @@ export default function ContactForm() {
 
   const { register, setValue, handleSubmit, formState, reset } =
     useForm<CheckoutFormData>({
-      resolver: yupResolver<yup.AnyObject>(contactFormSchema),
+      resolver: yupResolver(contactFormSchema),
     });
 
   const toastifySuccess = () => {
