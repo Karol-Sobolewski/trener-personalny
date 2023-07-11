@@ -29,15 +29,14 @@ export default function About() {
               </p>
             </div>
 
-            <div className="mt-8 sm:mt-12">
-              <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="mt-8 md:mt-12">
+              <dl className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <a
                   href="tel:669958538"
                   title="Zadzwoń do mnie"
-                  target="_blank"
                   className="flex flex-col justify-center align-middle rounded-lg border border-gray-100 dark:border-slate-400 shadow-sm hover:shadow-md duration-300 cursor-pointer px-4 py-8 text-center bg-white dark:bg-inherit"
                 >
-                  <dt className="order-last text-2xl font-medium text-gray-500 pt-4">
+                  <dt className="order-last text-lg font-medium text-gray-500 pt-4">
                     669958538
                   </dt>
 
@@ -60,10 +59,9 @@ export default function About() {
                 <a
                   href="mailto:kontakt@radeksenski.pl"
                   title="Napisz email"
-                  target="_blank"
                   className="flex flex-col justify-center align-middle rounded-lg border border-gray-100 dark:border-slate-400  shadow-sm hover:shadow-md duration-300 cursor-pointer px-4 py-8 text-center bg-white dark:bg-inherit"
                 >
-                  <dt className="order-last text-2xl font-medium text-gray-500 pt-4">
+                  <dt className="order-last text-lg font-medium text-gray-500 pt-4">
                     kontakt@radeksenski.pl
                   </dt>
 
@@ -86,7 +84,7 @@ export default function About() {
                   title="Instagram"
                   className="flex flex-col justify-center align-middle rounded-lg border border-gray-100 dark:border-slate-400  shadow-sm hover:shadow-md duration-300 cursor-pointer px-4 py-8 text-center bg-white dark:bg-inherit"
                 >
-                  <dt className="order-last text-2xl font-medium text-gray-500 pt-4">
+                  <dt className="order-last text-lg font-medium text-gray-500 pt-4">
                     Radek Senski
                   </dt>
 

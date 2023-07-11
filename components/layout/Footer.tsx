@@ -90,7 +90,7 @@ export default function Footer() {
                   href="https://www.instagram.com/radek.senski/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-red-700 transition   hover:text-red-700/75 hover:shadow-lg  hover:dark:text-red-500/75 dark:text-red-200"
+                  className="text-red-700 transition hover:text-red-700/75 hover:shadow-lg  hover:dark:text-red-500/75 dark:text-red-200"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -169,7 +169,7 @@ export default function Footer() {
                 <li>
                   <a
                     className="text-gray-700 transition hover:text-gray-700/75 "
-                    href="/wspolpraca/#konsultacja"
+                    href="/wspolpraca/#pojedyncza-konsultacja"
                   >
                     Pojedyncza konsultacja
                   </a>
@@ -214,7 +214,7 @@ export default function Footer() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 shrink-0 text-gray-900"
+                      className="h-5 w-5 shrink-0 text-red-700 dark:text-red-200"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -240,7 +240,7 @@ export default function Footer() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 shrink-0 text-gray-900"
+                      className="h-5 w-5 shrink-0 text-red-700 dark:text-red-200"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

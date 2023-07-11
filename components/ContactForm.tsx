@@ -1,10 +1,6 @@
-import Image from "next/image";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { setLocale } from "yup";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import "yup-phone-lite";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -12,45 +8,35 @@ import emailjs from "emailjs-com";
 import styles from "./ContactForm.module.scss";
 
 export default function ContactForm() {
-  const { push } = useRouter();
+  const contactFormSchema = yup.object({
+    firstName: yup.string().required("Podaj imię").max(254, "Zbyt długa nazwa"),
+    lastName: yup
+      .string()
+      .required("Podaj nazwisko")
+      .max(254, "Zbyt długa nazwa"),
+    email: yup
+      .string()
+      .email("Podaj poprawny adres email")
+      .required("Adres email jest wymagany")
+      .max(254, "Zbyt długa nazwa"),
+    phone: yup
+      .string()
+      .phone("PL", "Podaj poprawny numer telefonu")
+      .nullable()
+      .notRequired(),
 
-  const contactFormSchema = yup
-    .object({
-      firstName: yup
-        .string()
-        .required("Podaj imię")
-        .max(254, "Zbyt długa nazwa"),
-      lastName: yup
-        .string()
-        .required("Podaj nazwisko")
-        .max(254, "Zbyt długa nazwa"),
-      email: yup
-        .string()
-        .email("Podaj poprawny adres email")
-        .required("Adres email jest wymagany")
-        .max(254, "Zbyt długa nazwa"),
-      phone: yup
-        .string()
-        .phone("PL", "Podaj poprawny numer telefonu")
-        .required("Numer telefonu jest wymagany"),
-      message: yup
-        .string()
-        .required("Podaj wiadomość")
-        .min(50, "Zbyt krótka wiadomość")
-        .max(1000, "Zbyt długa wiadomość"),
-    })
-    .required();
-
-  setLocale({
-    mixed: {
-      default: "Pole niepoprawne",
-    },
+    message: yup
+      .string()
+      .required("Podaj wiadomość")
+      .min(50, "Zbyt krótka wiadomość")
+      .max(1000, "Zbyt długa wiadomość"),
   });
+
   type CheckoutFormData = yup.InferType<typeof contactFormSchema>;
 
   const { register, setValue, handleSubmit, formState, reset } =
     useForm<CheckoutFormData>({
-      resolver: yupResolver(contactFormSchema),
+      resolver: yupResolver<yup.AnyObject>(contactFormSchema),
     });
 
   const toastifySuccess = () => {
@@ -90,13 +76,11 @@ export default function ContactForm() {
   });
 
   return (
-    // <div className="flex items-center justify-center">
-
-    <section className="bg-gray-50 text-gray-900 rounded-lg shadow-md dark:shadow-none md:mx-16 pb-8">
+    <section className="text-gray-900 rounded-lg dark:shadow-none md:mx-16 pb-8 shadow-sm hover:shadow-md px-4 py-8  bg-white dark:bg-inherit  dark:border-slate-400">
       <div className="max-w-screen-xl px-4 flex justify-center align-middle ">
         <div className="max-w-3xl w-full">
           <form className="grid grid-cols-6 gap-4" onSubmit={onSubmit}>
-            <div className="col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <label
                 htmlFor="firstName"
                 className="block text-xs font-medium text-gray-700"
@@ -116,7 +100,7 @@ export default function ContactForm() {
               </span>
             </div>
 
-            <div className="col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <label
                 htmlFor="lastName"
                 className="block text-xs font-medium text-gray-700"
@@ -136,7 +120,7 @@ export default function ContactForm() {
               </span>
             </div>
 
-            <div className="col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <label
                 htmlFor="email"
                 className="block text-xs font-medium text-gray-700 "
@@ -156,12 +140,12 @@ export default function ContactForm() {
               </span>
             </div>
 
-            <div className="col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <label
                 htmlFor="phone"
                 className="block text-xs font-medium text-gray-700 "
               >
-                Telefon*
+                Telefon
               </label>
 
               <input
@@ -209,9 +193,3 @@ export default function ContactForm() {
     </section>
   );
 }
-
-// <div className="min-h-screen sm:grid sm:grid-cols-2">
-
-// </div>
-
-// </div>

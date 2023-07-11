@@ -35,7 +35,10 @@ export default function WhyMe() {
     },
   ];
   return (
-    <section className="text-gray-900 mt-8 pt-8" id="dlaczegoja">
+    <section
+      className="text-gray-900 mt-0 pt-0 md:mt-8 md:pt-8"
+      id="dlaczegoja"
+    >
       <div className="max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8 flex flex-col justify-center items-center align-middle">
         <div className="max-w-screen-md flex flex-col justify-center items-center align-middle">
           <h2 className="text-3xl font-bold sm:text-4xl text-center">
@@ -83,7 +86,7 @@ export default function WhyMe() {
             </div>
           ))}
         </div>
-        <h3 className="text-2xl font-bold sm:text-3xl mt-16 pt-16 text-center">
+        <h3 className="text-2xl font-bold sm:text-3xl mt-8 pt-8 md:mt-16 md:pt-16 text-center">
           Jeżeli jesteś w&nbsp;którejś z&nbsp;tych grup,
           napisz&nbsp;do&nbsp;mnie:
         </h3>

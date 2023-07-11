@@ -5,10 +5,13 @@ import styles from "./Navigation.module.scss";
 const nightwind = require("nightwind/helper");
 //@ts-ignore-next-line
 import { DarkModeSwitch } from "react-toggle-dark-mode";
+import Loading from "../common/Loading";
 
 export default function Navigation() {
   const [animateHeader, setAnimateHeader] = useState(false);
   const [isMenuVisible, toggleMenuVisibility] = useState(false);
+  const [sunColor, setSunColor] = useState("");
+
   const [isDarkMode, setDarkMode] = useState(false);
   const menuRef = useRef(null);
 
@@ -74,6 +77,22 @@ export default function Navigation() {
     nightwind.toggle(true);
   };
 
+  useEffect(() => {
+    if (typeof window !== undefined && window.innerWidth > 768) {
+      if (router.pathname === "/") {
+        if (animateHeader) {
+          setSunColor("black");
+        } else {
+          setSunColor("white");
+        }
+      } else {
+        setSunColor("black");
+      }
+    } else {
+      setSunColor("black");
+    }
+  }, [router, animateHeader]);
+
   return (
     <div
       className={`px-4 sm:px-6 lg:px-8 w-full fixed top-0 z-50 ease-in-out duration-500  ${
@@ -106,7 +125,7 @@ export default function Navigation() {
             aria-label="Global"
             className={`${
               isMenuVisible ? styles.menu : styles.menu__hidden
-            } bg-gray-50 md:bg-inherit md:dark:bg-inherit md:block duration-500`}
+            } bg-gray-50 md:bg-inherit md:dark:bg-inherit md:block duration-500 pt-16 md:pt-0`}
           >
             <ul className="flex items-center gap-6 text-sm ">
               <li className="md:hidden">
@@ -147,13 +166,7 @@ export default function Navigation() {
                 <DarkModeSwitch
                   checked={isDarkMode}
                   onChange={toggleNightMode}
-                  sunColor={
-                    router.pathname === "/"
-                      ? animateHeader
-                        ? "black"
-                        : "white"
-                      : "black"
-                  }
+                  sunColor={sunColor}
                 />
               </li>
             </ul>
@@ -162,7 +175,7 @@ export default function Navigation() {
             onClick={() => toggleMenuVisibility(!isMenuVisible)}
             className="block rounded bg-gray-50 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden z-10"
           >
-            <span className="sr-only">Toggle menu</span>
+            <span className="sr-only">Menu</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"

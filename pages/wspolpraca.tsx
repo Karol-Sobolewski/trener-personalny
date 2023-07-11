@@ -7,6 +7,7 @@ import Pricing from "../components/offer/Pricing";
 export default function About() {
   const personal = {
     title: "Treningi personalne",
+    id: "treningi-personalne",
     description: [
       "treningi 1 na 1 na których, po konsultacji, pracujemy nad realizacją Twoich celów. Jeżeli stawiasz pierwsze kroki na siłowni i chcesz nauczyć się dobrze trenować, jest to idealne rozwiązanie dla Ciebie. Podczas treningów pracujemy nad podstawowymi zdolnościami motorycznymi:",
     ],
@@ -30,6 +31,7 @@ export default function About() {
 
   const plans = {
     title: "Plany treningowe",
+    id: "plany-treningowe",
     description: [
       "Jeżeli jesteś bardziej zaawansowany, albo z racji mieszkania w innym mieście nie mamy możliwości pracy 1 na 1, masz możliwość skorzystania z indywidualnego planu treningowego, który pomoże Ci realizować swoje plany. W tym celu umawiamy się na konsultację online/telefoniczną i na podstawie zdobytych prze mnie informacji układam program treningowy „szyty na miarę”",
       "Dzięki regularnym raportom jestem w stanie na bieżąco modyfikować plan w razie potrzeby, a Ty dzięki temu wiesz, że idziesz w dobrym kierunku w odpowiednim tempie.",
@@ -55,6 +57,8 @@ export default function About() {
 
   const single = {
     title: "Pojedyncza konsultacja",
+    id: "pojedyncza-konsultacja",
+
     description: [
       "Jeżeli nie interesują Cie treningi indywidualne, ani plany treningowe, ale chcesz umówić cokolwiek związanego ze swoją aktywnością fizyczną, stylem życia, dietą, regeneracją czy ogólnie pojętym zdrowiem, możesz skorzystać z pojedynczej konsultacji gdzie w ciągu godziny postaram się rozwiązać Twój problem.",
     ],

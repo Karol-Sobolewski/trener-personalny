@@ -8,6 +8,7 @@ interface PricingList {
 }
 
 interface Pricing {
+  id: string;
   title: string;
   description: string[];
   descriptionList?: string[];
@@ -17,7 +18,8 @@ interface Pricing {
 
 export default function Pricing({ data }: { data: Pricing }) {
   return (
-    <section>
+    <section className="relative">
+      <div className="absolute -top-12 left-0" id={data.id}></div>
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
