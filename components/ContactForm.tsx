@@ -8,12 +8,12 @@ import emailjs from "emailjs-com";
 import styles from "./ContactForm.module.scss";
 import { useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { useRecaptcha } from "react-hook-recaptcha";
 
 export default function ContactForm() {
   const [token, setToken] = useState<string | null>(null);
   const captchaRef = useRef<HCaptcha>(null);
-  const hCaptchaSiteKey = "1d32eb16-521e-4c05-97f2-b4213ac0c29a";
+
+  const hCaptchaSiteKey = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY;
 
   const contactFormSchema = yup
     .object({
