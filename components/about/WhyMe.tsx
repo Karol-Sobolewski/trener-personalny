@@ -35,8 +35,8 @@ export default function WhyMe() {
     },
   ];
   return (
-    <section className="text-gray-900" id="dlaczegoja">
-      <div></div>
+    <section className="text-gray-900 relative">
+      <div className="absolute -top-12 left-0" id="dlaczegoja"></div>
       <div className="max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8 flex flex-col justify-center items-center align-middle">
         <div className="max-w-screen-md flex flex-col justify-center items-center align-middle">
           <h2 className="text-3xl font-bold sm:text-4xl text-center">
