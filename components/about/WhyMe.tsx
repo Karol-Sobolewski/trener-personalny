@@ -35,10 +35,8 @@ export default function WhyMe() {
     },
   ];
   return (
-    <section
-      className="text-gray-900 mt-0 pt-0 md:mt-8 md:pt-8"
-      id="dlaczegoja"
-    >
+    <section className="text-gray-900" id="dlaczegoja">
+      <div></div>
       <div className="max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8 flex flex-col justify-center items-center align-middle">
         <div className="max-w-screen-md flex flex-col justify-center items-center align-middle">
           <h2 className="text-3xl font-bold sm:text-4xl text-center">
@@ -52,11 +50,11 @@ export default function WhyMe() {
             sportowym, gdzie&nbsp;pracowałem z&nbsp;koszykarzami na&nbsp;każdym
             poziomie.
           </p>
-          <p className="mt-4 md:mt-8 text-gray-600 text-justify font-bold">
-            Aktualnie pracuję z&nbsp;osobami które chcą:
+          <p className="mt-4 md:mt-8 text-xl text-justify font-bold">
+            Aktualnie pracuję z&nbsp;osobami, które&nbsp;chcą:
           </p>
         </div>
-        <div className="mt-4 grid grid-cols-1 gap-8 md:mt-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
+        <div className="mt-4 grid grid-cols-1 gap-2 md:gap-8 md:mt-8 md:grid-cols-2  lg:grid-cols-3">
           {featuresList.map((item, i) => (
             <div key={i} className="flex items-center gap-4">
               <span className="shrink-0 bg-inherit p-4">
@@ -77,7 +75,7 @@ export default function WhyMe() {
               </span>
 
               <div>
-                <h2 className="text-lg font-bold">{item.title}</h2>
+                <h2 className="text-md font-bold">{item.title}</h2>
 
                 {/* <p className="mt-1 text-sm text-gray-600 dark:text-gray-100">
                   {item.text}

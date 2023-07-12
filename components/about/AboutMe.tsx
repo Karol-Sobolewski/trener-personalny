@@ -4,7 +4,7 @@ import Main from "../layout/Main";
 export default function AboutMe() {
   return (
     <div className="min-h-screen text-center">
-      <div className="sm:grid sm:grid-cols-2 mb-8">
+      <div className="sm:grid sm:grid-cols-2 mb-8 md:mb-16">
         <div className="p-8 md:p-12 lg:px-16 lg:py-24 flex">
           <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right flex flex-col justify-center align-middle">
             <h2 className="text-gray-500 text-justify mb-4 font-bold">
@@ -43,12 +43,12 @@ export default function AboutMe() {
           className="h-56 w-full object-cover sm:h-full rounded-md shadow-lg"
         />
       </div>
-      <div className="sm:grid sm:grid-cols-2 mb-16">
+      <div className="sm:grid sm:grid-cols-2 mb-4">
         <Image
           alt="Ja"
-          src="/images/about.webp"
-          width={1920}
-          height={1080}
+          src="/images/about2.webp"
+          width={1080}
+          height={1920}
           className="h-56 w-full object-cover sm:h-full rounded-md shadow-lg"
         />
         <div className="p-8 md:p-12 lg:px-16 lg:py-24 flex">
@@ -68,7 +68,7 @@ export default function AboutMe() {
               inwestować w&nbsp;swoje zdrowie i&nbsp;dobre samopoczucie już
               teraz!
             </p>
-            <p className="text-red-700  dark:text-red-300 md:mt-4 italic font-semibold text-xl">
+            <p className="text-red-700  dark:text-red-300 mt-8 italic font-semibold text-xl">
               „Nie potrzebujesz talentu, żeby ciężko pracować”
             </p>
           </div>

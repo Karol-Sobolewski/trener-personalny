@@ -6,14 +6,24 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import emailjs from "emailjs-com";
 import styles from "./ContactForm.module.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function ContactForm() {
   const [token, setToken] = useState<string | null>(null);
   const captchaRef = useRef<HCaptcha>(null);
+  const hCaptchaSiteKey = "1d32eb16-521e-4c05-97f2-b4213ac0c29a";
+  const [isDarkMode, setDarkMode] = useState(false);
+  const nightwind = require("nightwind/helper");
 
-  const hCaptchaSiteKey = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY;
+  useEffect(() => {
+    const mode = localStorage.getItem("nightwind-mode");
+    if (mode === "dark") {
+      setDarkMode(true);
+    } else {
+      setDarkMode(false);
+    }
+  });
 
   const contactFormSchema = yup
     .object({
@@ -205,6 +215,7 @@ export default function ContactForm() {
                 sitekey={hCaptchaSiteKey}
                 onVerify={setToken}
                 ref={captchaRef}
+                theme={isDarkMode ? "dark" : "light"}
               />
             </div>
             <div className="col-span-6 flex align-middle justify-center w-full">
