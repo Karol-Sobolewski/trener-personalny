@@ -259,7 +259,7 @@ export default function Footer() {
                     />
                   </svg>
 
-                  <address className="-mt-0.5 flex-1 not-italic text-gray-700 hover:text-gray-700/75 dark:text-gray-300 dark:hover:text-gray-400/75">
+                  <address className="-mt-0.5 flex-1 not-italic text-gray-700 hover:text-gray-700/75">
                     <a
                       href="https://maps.app.goo.gl/SbazARXSfZMtg9Hn7"
                       target="_blank"
