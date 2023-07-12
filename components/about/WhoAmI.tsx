@@ -17,7 +17,7 @@ export default function WhoAmI() {
           </div>
 
           <div className="lg:py-24">
-            <h2 className="text-3xl font-bold sm:text-4xl">
+            <h2 className="text-3xl font-bold sm:text-4xl text-gray-900">
               Czym różnię się od innych?
             </h2>
 
