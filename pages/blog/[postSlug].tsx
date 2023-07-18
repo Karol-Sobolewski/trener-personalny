@@ -114,7 +114,7 @@ export const getStaticPaths = async () => {
         },
       };
     }),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -131,6 +131,7 @@ export const getStaticProps = async ({
     return {
       props: {},
       notFound: true,
+      revalidate: 15,
     };
   }
   const { data } = await apolloClient.query<GetPostBySlugQuery, GetPostBySlugQueryVariables>({
