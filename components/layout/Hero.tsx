@@ -9,11 +9,9 @@ export default function Hero() {
         <div className="max-w-xl text-center sm:text-left">
           <h1 className="text-3xl font-extrabold sm:text-5xl text-white dark:text-gray-900">
             Radek Senski
-          </h1>
-
-          <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed text-white dark:text-gray-900">
+            <br />
             Trener personalny
-          </p>
+          </h1>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center">
             <Link

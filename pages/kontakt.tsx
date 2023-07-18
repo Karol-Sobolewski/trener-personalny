@@ -5,7 +5,7 @@ import Link from "next/link";
 import Main from "../components/layout/Main";
 import ContactForm from "../components/ContactForm";
 
-export default function About() {
+export default function ContactPage() {
   return (
     <>
       <Head>

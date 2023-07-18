@@ -19,7 +19,7 @@ interface Pricing {
 export default function Pricing({ data }: { data: Pricing }) {
   return (
     <section className="relative">
-      <div className="absolute -top-12 left-0" id={data.id}></div>
+      <div className="absolute -top-12 left-0" id={data.id} />
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
@@ -51,7 +51,7 @@ export default function Pricing({ data }: { data: Pricing }) {
                         fillRule="evenodd"
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                         clipRule="evenodd"
-                      ></path>
+                      />
                     </svg>
                     <span>{item}</span>
                   </li>

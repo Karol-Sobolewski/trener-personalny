@@ -6,7 +6,7 @@ export default function FourOhFour() {
   return (
     <>
       <Head>
-        <title>O mnie</title>
+        <title>404</title>
         <meta name="description" content="404" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

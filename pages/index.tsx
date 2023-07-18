@@ -9,6 +9,15 @@ import Main from "../components/layout/Main";
 const Home: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>Radek Senski Trener Personalny</title>
+        <meta
+          name="description"
+          content="Osiągnij swoje cele treningowe z Radkiem Senskim - Trenerem Personalnym. Indywidualne podejście, profesjonalne wsparcie i motywacja. Zdobądź wymarzoną formę!"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Hero />
       <Main>
         <AboutMe />

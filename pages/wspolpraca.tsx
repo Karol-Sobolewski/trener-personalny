@@ -73,15 +73,17 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>Kontakt</title>
+        <title>Współpraca</title>
         <meta name="description" content="Współpraca" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <Pricing data={personal} />
-        <Pricing data={plans} />
-        <Pricing data={single} />
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 pb-12 md:pb-16 lg:px-16 ">
+          <Pricing data={personal} />
+          <Pricing data={plans} />
+          <Pricing data={single} />
+        </div>
       </Main>
     </>
   );

@@ -1,0 +1,66 @@
+query GetPostsPages {
+  postsConnection {
+    pageInfo {
+      pageSize
+    }
+  }
+}
+
+query GetPosts {
+  posts {
+    id
+    slug
+    title
+    excerpt
+    createdAt
+    coverImage {
+      url
+      fileName
+      height
+      width
+    }
+  }
+}
+
+query GetPostsSlugs {
+  posts {
+    slug
+  }
+}
+
+query GetPostBySlug($slug: String) {
+  post(where: { slug: $slug }) {
+    id
+    slug
+    title
+    excerpt
+    createdAt
+    content {
+      markdown
+    }
+    coverImage {
+      url
+      fileName
+      height
+      width
+    }
+  }
+}
+
+fragment postContent on Post {
+  id
+  title
+  excerpt
+  createdAt
+  slug
+  coverImage {
+    ...CoverImage
+  }
+}
+
+fragment CoverImage on Asset {
+  url
+  fileName
+  height
+  width
+}

@@ -7,7 +7,7 @@ import WhoAmI from "../components/about/WhoAmI";
 import WhyMe from "../components/about/WhyMe";
 import ContactForm from "../components/ContactForm";
 
-export default function About() {
+export default function AboutPage() {
   return (
     <>
       <Head>

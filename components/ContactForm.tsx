@@ -81,8 +81,6 @@ export default function ContactForm() {
     if (captchaRef.current) {
       captchaRef.current.execute();
       if (token) {
-        console.log(`hCaptcha Token: ${token}`);
-        console.log({ data });
         try {
           const templateParams = {
             firstName: data.firstName,
