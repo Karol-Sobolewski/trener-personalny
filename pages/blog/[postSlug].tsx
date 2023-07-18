@@ -131,7 +131,6 @@ export const getStaticProps = async ({
     return {
       props: {},
       notFound: true,
-      revalidate: 15,
     };
   }
   const { data } = await apolloClient.query<GetPostBySlugQuery, GetPostBySlugQueryVariables>({

@@ -23,15 +23,17 @@ export default function BlogCard(data: PostContentFragment) {
         </Link> */}
         <Link href={`blog/${data.slug}`}>
           <div>
-            <p className="mt-0.5 text-lg text-gray-900">{data.title}</p>
+            <h3 className="mt-0.5 text-lg text-gray-900">{data.title}</h3>
+            <time
+              dateTime={date}
+              className="block text-xs text-gray-500 mt-2 mb-2"
+            >
+              {date}
+            </time>
 
             <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
               {data.excerpt}
             </p>
-
-            <time dateTime={date} className="block text-xs text-gray-500">
-              {date}
-            </time>
           </div>
         </Link>
       </div>

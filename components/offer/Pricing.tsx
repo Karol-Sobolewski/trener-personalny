@@ -22,7 +22,7 @@ export default function Pricing({ data }: { data: Pricing }) {
       <div className="absolute -top-12 left-0" id={data.id} />
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
+          <h2 className="mb-8 text-3xl font-bold text-gray-900 sm:text-4xl">
             {data.title}
           </h2>
           {data.description.map((desc, i) => (
@@ -33,7 +33,7 @@ export default function Pricing({ data }: { data: Pricing }) {
               {desc}
             </p>
           ))}
-          <div className="mt-5 flex justify-center align-middle items-center flex-col">
+          <div className="mt-4 flex justify-center align-middle items-center flex-col">
             <ul role="list" className="mb-2 text-center flex flex-col">
               {data.descriptionList &&
                 data.descriptionList.map((item, i) => (
@@ -76,12 +76,6 @@ export default function Pricing({ data }: { data: Pricing }) {
                   {item.price} zł
                 </span>
               </div>
-              {/* <a
-              href="#"
-              className="text-gray-900 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
-            >
-              Get started
-            </a> */}
             </div>
           ))}
         </div>

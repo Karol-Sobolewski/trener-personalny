@@ -17,6 +17,11 @@ export default function AboutPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
+        <div className="mx-auto max-w-screen-xl pt-12 md:pt-16">
+          <h1 className="text-4xl tracking-tight font-extrabold text-gray-900">
+            O mnie
+          </h1>
+        </div>
         <WhoAmI />
         <WhyMe />
         <ContactForm />

@@ -79,6 +79,11 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
+        <div className="mx-auto max-w-screen-xl pt-12 md:pt-16">
+          <h1 className="text-4xl tracking-tight font-extrabold text-gray-900">
+            Współpraca z trenerem personalnym
+          </h1>
+        </div>
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 pb-12 md:pb-16 lg:px-16 ">
           <Pricing data={personal} />
           <Pricing data={plans} />
