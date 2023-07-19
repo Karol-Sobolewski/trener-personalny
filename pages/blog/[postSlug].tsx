@@ -1,11 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { gql } from "@apollo/client";
-import Loading from "../../components/common/Loading";
 import { apolloClient } from "../../graphql/apolloClient";
 import Main from "../../components/layout/Main";
 import remarkGfm from 'remark-gfm';
@@ -29,7 +26,7 @@ export default function BlogPage({
   if (!data || !data.post) {
     return null;
   } 
-  
+
   const markdown = data.post.content.markdown
 
   return (
@@ -97,10 +94,6 @@ export default function BlogPage({
 
             <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
             </article>
-
-            {/* <p className="font-light text-gray-500 sm:text-xl text-justify">
-              Description
-            </p> */}
             <button type="button" onClick={() => router.back()}>
               <span className="text-red-700 dark:text-red-200 mr-2">←</span>
 

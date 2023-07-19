@@ -21,7 +21,7 @@ import {
   GetPostsQuery,
   useGetPostsPagesQuery,
 } from "../../generated/graphql";
-import Pagination from "../../components/common/Paginations";
+import Pagination from "../../components/common/Pagination";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
