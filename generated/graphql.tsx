@@ -4506,6 +4506,14 @@ export type GetPostsPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetPostsPagesQuery = { __typename?: 'Query', postsConnection: { __typename?: 'PostConnection', pageInfo: { __typename?: 'PageInfo', pageSize?: number | null } } };
 
+export type GetPostsPaginationQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type GetPostsPaginationQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, slug?: string | null, title: string, excerpt?: string | null, createdAt: any, coverImage: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } }> };
+
 export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -4583,6 +4591,49 @@ export function useGetPostsPagesLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type GetPostsPagesQueryHookResult = ReturnType<typeof useGetPostsPagesQuery>;
 export type GetPostsPagesLazyQueryHookResult = ReturnType<typeof useGetPostsPagesLazyQuery>;
 export type GetPostsPagesQueryResult = Apollo.QueryResult<GetPostsPagesQuery, GetPostsPagesQueryVariables>;
+export const GetPostsPaginationDocument = gql`
+    query GetPostsPagination($first: Int, $skip: Int) {
+  posts(first: $first, skip: $skip) {
+    id
+    slug
+    title
+    excerpt
+    createdAt
+    coverImage {
+      ...CoverImage
+    }
+  }
+}
+    ${CoverImageFragmentDoc}`;
+
+/**
+ * __useGetPostsPaginationQuery__
+ *
+ * To run a query within a React component, call `useGetPostsPaginationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPostsPaginationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPostsPaginationQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      skip: // value for 'skip'
+ *   },
+ * });
+ */
+export function useGetPostsPaginationQuery(baseOptions?: Apollo.QueryHookOptions<GetPostsPaginationQuery, GetPostsPaginationQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPostsPaginationQuery, GetPostsPaginationQueryVariables>(GetPostsPaginationDocument, options);
+      }
+export function useGetPostsPaginationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPostsPaginationQuery, GetPostsPaginationQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPostsPaginationQuery, GetPostsPaginationQueryVariables>(GetPostsPaginationDocument, options);
+        }
+export type GetPostsPaginationQueryHookResult = ReturnType<typeof useGetPostsPaginationQuery>;
+export type GetPostsPaginationLazyQueryHookResult = ReturnType<typeof useGetPostsPaginationLazyQuery>;
+export type GetPostsPaginationQueryResult = Apollo.QueryResult<GetPostsPaginationQuery, GetPostsPaginationQueryVariables>;
 export const GetPostsDocument = gql`
     query GetPosts {
   posts {
@@ -4592,14 +4643,11 @@ export const GetPostsDocument = gql`
     excerpt
     createdAt
     coverImage {
-      url
-      fileName
-      height
-      width
+      ...CoverImage
     }
   }
 }
-    `;
+    ${CoverImageFragmentDoc}`;
 
 /**
  * __useGetPostsQuery__

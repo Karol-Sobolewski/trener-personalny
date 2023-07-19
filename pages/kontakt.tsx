@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <>
       <Head>
-        <title>Kontakt</title>
+        <title>Kontakt - Warszawa - Radek Trener</title>
         <meta name="description" content="Kontakt" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -81,6 +81,7 @@ export default function ContactPage() {
                 <a
                   href="https://www.instagram.com/radek.senski/"
                   target="_blank"
+                  rel="nofollow"
                   title="Instagram"
                   className="flex flex-col justify-center align-middle rounded-lg border border-gray-100 dark:border-slate-400  shadow-sm hover:shadow-md duration-300 cursor-pointer px-4 py-8 text-center bg-white dark:bg-inherit"
                 >

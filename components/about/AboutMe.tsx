@@ -7,7 +7,7 @@ export default function AboutMe() {
       <div className="sm:grid sm:grid-cols-2 mb-8 md:mb-16">
         <div className="p-8 md:p-12 lg:px-16 lg:py-24 flex">
           <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right flex flex-col justify-center align-middle">
-            <h2 className="text-gray-500 text-justify mb-4 font-bold">
+            <h2 className="text-gray-500 text-justify text-xl mb-4 font-bold">
               Poszukujesz profesjonalnego trenera personalnego, który pomoże Ci
               osiągnąć Twoje cele treningowe?
             </h2>
@@ -36,7 +36,7 @@ export default function AboutMe() {
           </div>
         </div>
         <Image
-          alt="Ja"
+          alt="Radek Senski Trener Personalny"
           src="/images/about.webp"
           width={1920}
           height={1080}
@@ -45,7 +45,7 @@ export default function AboutMe() {
       </div>
       <div className="sm:grid sm:grid-cols-2 mb-4">
         <Image
-          alt="Ja"
+          alt="Trener personalny Radek Senski pomaga w ćwiczenaich"
           src="/images/about2.webp"
           width={1080}
           height={1920}

@@ -6,6 +6,19 @@ query GetPostsPages {
   }
 }
 
+query GetPostsPagination($first: Int, $skip: Int) {
+  posts(first: $first, skip: $skip) {
+    id
+    slug
+    title
+    excerpt
+    createdAt
+    coverImage {
+      ...CoverImage
+    }
+  }
+}
+
 query GetPosts {
   posts {
     id
@@ -14,10 +27,7 @@ query GetPosts {
     excerpt
     createdAt
     coverImage {
-      url
-      fileName
-      height
-      width
+      ...CoverImage
     }
   }
 }

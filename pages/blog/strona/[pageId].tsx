@@ -2,22 +2,47 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import Main from "../../components/layout/Main";
-import WhoAmI from "../../components/about/WhoAmI";
-import WhyMe from "../../components/about/WhyMe";
-import ContactForm from "../../components/ContactForm";
-import BlogCard from "../../components/common/BlogCard";
+import Main from "../../../components/layout/Main";
+import WhoAmI from "../../../components/about/WhoAmI";
+import WhyMe from "../../../components/about/WhyMe";
+import ContactForm from "../../../components/ContactForm";
+import BlogCard from "../../../components/common/BlogCard";
 import { useQuery, gql } from "@apollo/client";
-import Loading from "../../components/common/Loading";
-import { apolloClient } from "../../graphql/apolloClient";
-import { InferGetStaticPropsType } from "next";
-import { GetPostsDocument, GetPostsQuery } from "../../generated/graphql";
-import Pagination from "../../components/common/Paginations";
+import Loading from "../../../components/common/Loading";
+import { apolloClient } from "../../../graphql/apolloClient";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { GetPostsDocument, GetPostsPagesDocument, GetPostsPagesQuery, GetPostsPaginationDocument, GetPostsPaginationQuery, GetPostsPaginationQueryVariables, GetPostsQuery } from "../../../generated/graphql";
+import Pagination from "../../../components/common/Paginations";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function BlogPage({
   data,
+  page,
+  pageSize,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   if (!data || !data.posts) return <Loading />;
+  const router = useRouter();
+
+  const [currentPage, setCurrentPage] = useState(page);
+  const pageNumberLimit = 5;
+  const [maxPageLimit, setMaxPageLimit] = useState(5);
+  const [minPageLimit, setMinPageLimit] = useState(0);
+  const [paginationPages, setPaginationPages] = useState(pageSize);
+
+  const paginate = (pageNumber: number) => {
+    if (pageNumber === 1) {
+      router.push("/blog");
+    }
+    setCurrentPage(pageNumber);
+    if (pageNumber < pageNumberLimit - 2) {
+      setMaxPageLimit(pageNumberLimit);
+    } else {
+      setMaxPageLimit(pageNumber + 2);
+    }
+    setMinPageLimit(pageNumber - 3);
+    router.push(`${pageNumber}`);
+  };
 
   return (
     <>
@@ -81,27 +106,71 @@ export default function BlogPage({
             </svg>
           </a>
         </div> */}
-        {/* <Pagination
+        <Pagination
             currentPage={page}
             paginate={paginate}
             totalPages={paginationPages}
             minPageLimit={minPageLimit}
             maxPageLimit={maxPageLimit}
-          /> */}
+          />
       </Main>
     </>
   );
 }
 
-export const getStaticProps = async () => {
-  const { data } = await apolloClient.query<GetPostsQuery>({
-    query: GetPostsDocument,
-  });
-
-  return {
-    props: {
-      data,
-    },
-    revalidate: 15,
+export const getStaticPaths = async () => {
+    return {
+      paths: Array.from({ length: 10 }, (_, i) => i + 1).map((i) => {
+          console.log(`i`, i)
+          return {
+          params: {
+            pageId: i.toString(),
+          },
+        };
+      }),
+      fallback: true,
+    };
   };
-};
+  
+  export type InferGetStaticPathsType<T> = T extends () => Promise<{
+    paths: Array<{ params: infer R }>;
+  }>
+    ? R
+    : never;
+  
+  export const getStaticProps = async ({
+    params,
+  }: GetStaticPropsContext<InferGetStaticPathsType<typeof getStaticPaths>>) => {
+    const page = Number(params?.pageId) || 1;
+    if (!params?.pageId) {
+      return {
+        props: {},
+        notFound: true,
+      };
+    }
+
+  
+    const { data } = await apolloClient.query<
+      GetPostsPaginationQuery,
+      GetPostsPaginationQueryVariables
+    >({
+      variables: {
+        first: 1,
+        skip: page - 1,
+      },
+      query: GetPostsPaginationDocument,
+    });
+  
+    const postsConnection = await apolloClient.query<GetPostsPagesQuery>({
+      query: GetPostsPagesDocument,
+    });
+  
+    const pageSize = postsConnection.data.postsConnection.pageInfo.pageSize;
+    return {
+      props: {
+        data,
+        page: page,
+        pageSize: pageSize,
+      },
+    };
+  };

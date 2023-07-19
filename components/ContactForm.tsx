@@ -106,7 +106,7 @@ export default function ContactForm() {
   });
 
   return (
-    <section className="text-gray-900 rounded-lg dark:shadow-none md:mx-16 pb-8 shadow-sm hover:shadow-md px-4 py-8  bg-white dark:bg-inherit  dark:border-slate-400">
+    <section className="text-gray-900 rounded-lg dark:shadow-none md:mx-16 pb-8 shadow-sm hover:shadow-md px-4 py-8 mx-4 bg-white dark:bg-inherit  dark:border-slate-400">
       <div className="max-w-screen-xl px-4 flex justify-center align-middle ">
         <div className="max-w-3xl w-full">
           <form className="grid grid-cols-6 gap-4" onSubmit={onSubmit}>

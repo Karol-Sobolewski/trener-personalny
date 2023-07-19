@@ -8,7 +8,9 @@ import { gql } from "@apollo/client";
 import Loading from "../../components/common/Loading";
 import { apolloClient } from "../../graphql/apolloClient";
 import Main from "../../components/layout/Main";
-import  Markdown  from "markdown-to-jsx";
+import remarkGfm from 'remark-gfm';
+import ReactMarkdown from 'react-markdown';
+
 import { GetPostBySlugDocument, GetPostBySlugQuery, GetPostBySlugQueryVariables, GetPostsSlugsDocument, GetPostsSlugsQuery } from "../../generated/graphql";
 
 
@@ -22,7 +24,7 @@ export default function BlogPage({
   return (
     <>
       <Head>
-        <title>{data.post.title}</title>
+        <title>{data.post.title} - Warszawa - Radek Trener</title>
         <meta name="description" content={data.post.excerpt || "to jest typowy content"} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -82,7 +84,7 @@ export default function BlogPage({
             />
             <article className="prose lg:prose-xl p-4 text-justify">
 
-            <Markdown>{markdown}</Markdown>
+            <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
             </article>
 
             {/* <p className="font-light text-gray-500 sm:text-xl text-justify">

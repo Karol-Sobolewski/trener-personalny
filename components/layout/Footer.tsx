@@ -56,7 +56,7 @@ export default function Footer() {
                 />
               </svg> */}
               <Image
-                alt="Logo"
+                alt="Radek Trener. Siła, kondycja, sprawność"
                 src="/images/logo.svg"
                 width={200}
                 height={65}
@@ -67,7 +67,8 @@ export default function Footer() {
               <li>
                 <a
                   href="https://www.instagram.com/radek.senski/"
-                  rel="noreferrer"
+                  rel="nofollow"
+                  title="Instagram"
                   target="_blank"
                   className="text-red-700 transition hover:text-red-700/75 hover:shadow-lg  hover:dark:text-red-500/75 dark:text-red-200"
                 >
@@ -190,6 +191,7 @@ export default function Footer() {
                   <a
                     className="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end "
                     href="mailto:radek.senski@gmail.com"
+                    title="Wyślij mail"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -216,6 +218,7 @@ export default function Footer() {
                   <a
                     className="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
                     href="tel:+48669958538"
+                    title="Zadzwoń"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -263,6 +266,7 @@ export default function Footer() {
                     <a
                       href="https://maps.app.goo.gl/SbazARXSfZMtg9Hn7"
                       target="_blank"
+                      title="Sprawdź na mapie"
                     >
                       Wawelska 5 <br /> 02-034 Warszawa
                     </a>

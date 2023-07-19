@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>O mnie</title>
+        <title>O mnie - Warszawa - Radek Trener</title>
         <meta name="description" content="O mnie" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
