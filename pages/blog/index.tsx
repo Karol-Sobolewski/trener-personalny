@@ -10,14 +10,56 @@ import BlogCard from "../../components/common/BlogCard";
 import { useQuery, gql } from "@apollo/client";
 import Loading from "../../components/common/Loading";
 import { apolloClient } from "../../graphql/apolloClient";
-import { InferGetStaticPropsType } from "next";
-import { GetPostsDocument, GetPostsQuery } from "../../generated/graphql";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import {
+  GetPostsDocument,
+  GetPostsPagesDocument,
+  GetPostsPagesQuery,
+  GetPostsPaginationDocument,
+  GetPostsPaginationQuery,
+  GetPostsPaginationQueryVariables,
+  GetPostsQuery,
+  useGetPostsPagesQuery,
+} from "../../generated/graphql";
 import Pagination from "../../components/common/Paginations";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function BlogPage({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  if (!data || !data.posts) return <Loading />;
+  const router = useRouter();
+  useEffect(() => {
+    if (!data || !data.posts) {
+      router.push("/404");
+    }
+  }, []);
+
+  if (!data || !data.posts) {
+    return null;
+  } 
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageNumberLimit = 5;
+  const [maxPageLimit, setMaxPageLimit] = useState(5);
+  const [minPageLimit, setMinPageLimit] = useState(0);
+  const postsPages = useGetPostsPagesQuery();
+  const postsNumber = postsPages.data?.postsConnection.pageInfo.pageSize
+
+
+  const paginate = (pageNumber: number) => {
+    if (pageNumber === 1) {
+      router.push("/blog");
+    }
+    setCurrentPage(pageNumber);
+    if (pageNumber < pageNumberLimit - 2) {
+      setMaxPageLimit(pageNumberLimit);
+    } else {
+      setMaxPageLimit(pageNumber + 2);
+    }
+    setMinPageLimit(pageNumber - 3);
+    router.push(`/blog/strona/${pageNumber}`);
+  };
 
   return (
     <>
@@ -81,21 +123,30 @@ export default function BlogPage({
             </svg>
           </a>
         </div> */}
-        {/* <Pagination
-            currentPage={page}
-            paginate={paginate}
-            totalPages={paginationPages}
-            minPageLimit={minPageLimit}
-            maxPageLimit={maxPageLimit}
-          /> */}
+        <Pagination
+          currentPage={1}
+          paginate={paginate}
+          postsNumber={postsNumber}
+        />
       </Main>
     </>
   );
 }
 
 export const getStaticProps = async () => {
-  const { data } = await apolloClient.query<GetPostsQuery>({
-    query: GetPostsDocument,
+  // const { postsConnection } = await apolloClient.query<GetPostsPagesQuery>({
+  //   query: GetPostsPagesDocument,
+  // });
+
+  const { data } = await apolloClient.query<
+    GetPostsPaginationQuery,
+    GetPostsPaginationQueryVariables
+  >({
+    variables: {
+      first: 6,
+      skip: 0,
+    },
+    query: GetPostsPaginationDocument,
   });
 
   return {

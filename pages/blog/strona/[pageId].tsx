@@ -11,9 +11,9 @@ import { useQuery, gql } from "@apollo/client";
 import Loading from "../../../components/common/Loading";
 import { apolloClient } from "../../../graphql/apolloClient";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { GetPostsDocument, GetPostsPagesDocument, GetPostsPagesQuery, GetPostsPaginationDocument, GetPostsPaginationQuery, GetPostsPaginationQueryVariables, GetPostsQuery } from "../../../generated/graphql";
+import { GetPostsDocument, GetPostsPagesDocument, GetPostsPagesQuery, GetPostsPaginationDocument, GetPostsPaginationQuery, GetPostsPaginationQueryVariables, GetPostsQuery, useGetPostsPagesQuery } from "../../../generated/graphql";
 import Pagination from "../../../components/common/Paginations";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function BlogPage({
@@ -21,8 +21,19 @@ export default function BlogPage({
   page,
   pageSize,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  if (!data || !data.posts) return <Loading />;
   const router = useRouter();
+ 
+
+  useEffect(() => {
+    if (!data || !data.posts) {
+      router.push("/404");
+    }
+  }, []);
+
+  if (!data || !data.posts) {
+    return null;
+  } 
+  
 
   const [currentPage, setCurrentPage] = useState(page);
   const pageNumberLimit = 5;
@@ -30,17 +41,15 @@ export default function BlogPage({
   const [minPageLimit, setMinPageLimit] = useState(0);
   const [paginationPages, setPaginationPages] = useState(pageSize);
 
+  const postsPages = useGetPostsPagesQuery();
+  const postsNumber = postsPages.data?.postsConnection.pageInfo.pageSize
+
   const paginate = (pageNumber: number) => {
     if (pageNumber === 1) {
       router.push("/blog");
     }
+
     setCurrentPage(pageNumber);
-    if (pageNumber < pageNumberLimit - 2) {
-      setMaxPageLimit(pageNumberLimit);
-    } else {
-      setMaxPageLimit(pageNumber + 2);
-    }
-    setMinPageLimit(pageNumber - 3);
     router.push(`${pageNumber}`);
   };
 
@@ -109,9 +118,7 @@ export default function BlogPage({
         <Pagination
             currentPage={page}
             paginate={paginate}
-            totalPages={paginationPages}
-            minPageLimit={minPageLimit}
-            maxPageLimit={maxPageLimit}
+            postsNumber={postsNumber}
           />
       </Main>
     </>
@@ -121,7 +128,6 @@ export default function BlogPage({
 export const getStaticPaths = async () => {
     return {
       paths: Array.from({ length: 10 }, (_, i) => i + 1).map((i) => {
-          console.log(`i`, i)
           return {
           params: {
             pageId: i.toString(),
@@ -155,8 +161,8 @@ export const getStaticPaths = async () => {
       GetPostsPaginationQueryVariables
     >({
       variables: {
-        first: 1,
-        skip: page - 1,
+        first: 6,
+        skip: 6 * (page - 1),
       },
       query: GetPostsPaginationDocument,
     });

@@ -12,13 +12,24 @@ import remarkGfm from 'remark-gfm';
 import ReactMarkdown from 'react-markdown';
 
 import { GetPostBySlugDocument, GetPostBySlugQuery, GetPostBySlugQueryVariables, GetPostsSlugsDocument, GetPostsSlugsQuery } from "../../generated/graphql";
+import { useEffect } from "react";
 
 
 export default function BlogPage({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  if (!data || !data.post) return <Loading />;
   const router = useRouter();
+
+  useEffect(() => {
+    if (!data || !data.post) {
+      router.push("/404");
+    }
+  }, []);
+
+  if (!data || !data.post) {
+    return null;
+  } 
+  
   const markdown = data.post.content.markdown
 
   return (

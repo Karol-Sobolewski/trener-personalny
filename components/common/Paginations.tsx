@@ -1,20 +1,35 @@
+import { useEffect, useState } from "react";
+import Loading from "./Loading";
+import ErrorPage from "next/error";
+import { useRouter } from "next/router";
+
 export type Props = {
   currentPage: number;
   paginate: (pageNumber: number) => void;
-  totalPages: number | null | undefined;
-  minPageLimit: number;
-  maxPageLimit: number;
+  postsNumber: number | null | undefined;
 };
 
 export default function Pagination({
   currentPage,
   paginate,
-  totalPages,
-  minPageLimit,
-  maxPageLimit,
+  postsNumber,
 }: Props) {
   const pageNumbers = [];
-  if (totalPages) {
+  const router = useRouter();
+
+  if (!postsNumber) {
+    return <Loading />;
+  }
+
+  useEffect(() => {
+    if (currentPage === 0 || currentPage > totalPages) {
+      router.push("/404");
+    }
+  }, []);
+
+  const totalPages = Math.ceil(postsNumber / 4);
+
+  if (totalPages > 0) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
     }
@@ -57,8 +72,14 @@ export default function Pagination({
           </svg>
         </a>
       </li>
-
-      {pageNumbers.map((number) => {
+      <li>
+        <p className="text-xs text-gray-900">
+          {currentPage}
+          <span className="mx-0.25">/</span>
+          {totalPages}
+        </p>
+      </li>
+      {/* {pageNumbers.map((number) => {
         if (number <= maxPageLimit && number > minPageLimit) {
           return (
             <li key={number}>
@@ -75,7 +96,7 @@ export default function Pagination({
             </li>
           );
         } else return null;
-      })}
+      })} */}
 
       <li className={currentPage === totalPages ? "hidden" : "flex"}>
         <a
