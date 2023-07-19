@@ -33,7 +33,7 @@ export default function About() {
     title: "Plany treningowe",
     id: "plany-treningowe",
     description: [
-      "Jeżeli jesteś bardziej zaawansowany, albo z racji mieszkania w innym mieście nie mamy możliwości pracy 1 na 1, masz możliwość skorzystania z indywidualnego planu treningowego, który pomoże Ci realizować swoje plany. W tym celu umawiamy się na konsultację online/telefoniczną i na podstawie zdobytych prze mnie informacji układam program treningowy „szyty na miarę”",
+      "Jeżeli jesteś bardziej zaawansowany, albo z racji mieszkania w innym mieście nie mamy możliwości pracy 1 na 1, masz możliwość skorzystania z indywidualnego planu treningowego, który pomoże Ci realizować swoje plany. W tym celu umawiamy się na konsultację online/telefoniczną i na podstawie zdobytych prze mnie informacji układam program treningowy „szyty na miarę”.",
       "Dzięki regularnym raportom jestem w stanie na bieżąco modyfikować plan w razie potrzeby, a Ty dzięki temu wiesz, że idziesz w dobrym kierunku w odpowiednim tempie.",
     ],
     pricingList: [

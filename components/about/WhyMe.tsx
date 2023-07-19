@@ -112,14 +112,6 @@ export default function WhyMe() {
           Jeżeli jesteś w&nbsp;którejś z&nbsp;tych grup,
           napisz&nbsp;do&nbsp;mnie:
         </h3>
-
-        {/* <Image
-          alt="Ja"
-          src="/images/whyme.webp"
-          width={1920}
-          height={1080}
-          className="h-56 w-full object-cover sm:h-full  rounded-md shadow-lg mt-16"
-        /> */}
       </div>
     </section>
   );

@@ -67,7 +67,7 @@ export default function Footer() {
               <li>
                 <a
                   href="https://www.instagram.com/radek.senski/"
-                  rel="nofollow"
+                  rel="nofollow noreferrer"
                   title="Instagram"
                   target="_blank"
                   className="text-red-700 transition hover:text-red-700/75 hover:shadow-lg  hover:dark:text-red-500/75 dark:text-red-200"
