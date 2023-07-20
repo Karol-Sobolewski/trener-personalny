@@ -7,12 +7,14 @@ export type Props = {
   currentPage: number;
   paginate: (pageNumber: number) => void;
   postsNumber: number | null | undefined;
+  postsPerPage: number;
 };
 
 export default function Pagination({
   currentPage,
   paginate,
   postsNumber,
+  postsPerPage,
 }: Props) {
   const pageNumbers = [];
   const router = useRouter();
@@ -27,8 +29,7 @@ export default function Pagination({
     }
   }, []);
 
-  const totalPages = Math.ceil(postsNumber / 2);
-
+  const totalPages = Math.ceil(postsNumber / postsPerPage);
   if (totalPages > 0) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);

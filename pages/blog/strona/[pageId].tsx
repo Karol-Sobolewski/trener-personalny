@@ -20,6 +20,7 @@ export default function BlogPage({
   data,
   page,
   pageSize,
+  postsPerPage
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
  
@@ -36,10 +37,6 @@ export default function BlogPage({
   
 
   const [currentPage, setCurrentPage] = useState(page);
-  const pageNumberLimit = 5;
-  const [maxPageLimit, setMaxPageLimit] = useState(5);
-  const [minPageLimit, setMinPageLimit] = useState(0);
-  const [paginationPages, setPaginationPages] = useState(pageSize);
 
   const postsPages = useGetPostsPagesQuery();
   const postsNumber = postsPages.data?.postsConnection.pageInfo.pageSize
@@ -79,6 +76,7 @@ export default function BlogPage({
             currentPage={page}
             paginate={paginate}
             postsNumber={postsNumber}
+            postsPerPage={postsPerPage}
           />
       </Main>
     </>
@@ -107,7 +105,14 @@ export const getStaticPaths = async () => {
   export const getStaticProps = async ({
     params,
   }: GetStaticPropsContext<InferGetStaticPathsType<typeof getStaticPaths>>) => {
+
+
     const page = Number(params?.pageId) || 1;
+
+    //! PostsPerPage
+    
+    const postsPerPage = 6
+
     if (!params?.pageId) {
       return {
         props: {},
@@ -116,14 +121,16 @@ export const getStaticPaths = async () => {
       };
     }
 
-  
+   
+
+
     const { data } = await apolloClient.query<
       GetPostsPaginationQuery,
       GetPostsPaginationQueryVariables
     >({
       variables: {
-        first: 2,
-        skip: 2 * (page - 1),
+        first: postsPerPage,
+        skip: postsPerPage * (page - 1),
       },
       query: GetPostsPaginationDocument,
     });
@@ -138,6 +145,7 @@ export const getStaticPaths = async () => {
         data,
         page: page,
         pageSize: pageSize,
+        postsPerPage,
       },
       revalidate:  60 * 15
     };

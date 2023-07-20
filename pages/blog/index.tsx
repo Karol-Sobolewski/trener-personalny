@@ -26,7 +26,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function BlogPage({
-  data,
+  data, postsPerPage
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
   useEffect(() => {
@@ -40,24 +40,14 @@ export default function BlogPage({
   } 
   
   const [currentPage, setCurrentPage] = useState(1);
-  const pageNumberLimit = 5;
-  const [maxPageLimit, setMaxPageLimit] = useState(5);
-  const [minPageLimit, setMinPageLimit] = useState(0);
   const postsPages = useGetPostsPagesQuery();
   const postsNumber = postsPages.data?.postsConnection.pageInfo.pageSize
-
 
   const paginate = (pageNumber: number) => {
     if (pageNumber === 1) {
       router.push("/blog");
     }
     setCurrentPage(pageNumber);
-    // if (pageNumber < pageNumberLimit - 2) {
-    //   setMaxPageLimit(pageNumberLimit);
-    // } else {
-    //   setMaxPageLimit(pageNumber + 2);
-    // }
-    // setMinPageLimit(pageNumber - 3);
     router.push(`/blog/strona/${pageNumber}`);
   };
 
@@ -84,6 +74,7 @@ export default function BlogPage({
           currentPage={1}
           paginate={paginate}
           postsNumber={postsNumber}
+          postsPerPage={postsPerPage}
         />
       </Main>
     </>
@@ -91,16 +82,19 @@ export default function BlogPage({
 }
 
 export const getStaticProps = async () => {
-  // const { postsConnection } = await apolloClient.query<GetPostsPagesQuery>({
-  //   query: GetPostsPagesDocument,
-  // });
+
+    //! PostsPerPage + [pageId]
+    
+  const postsPerPage = 6
 
   const { data } = await apolloClient.query<
     GetPostsPaginationQuery,
     GetPostsPaginationQueryVariables
+
+
   >({
     variables: {
-      first: 2,
+      first: postsPerPage,
       skip: 0,
     },
     query: GetPostsPaginationDocument,
@@ -109,6 +103,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       data,
+      postsPerPage
     },
     revalidate: 60 * 15,
   };
