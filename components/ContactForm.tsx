@@ -78,6 +78,19 @@ export default function ContactForm() {
     });
   };
 
+  const toastifyError = () => {
+    toast(`Błąd!`, {
+      autoClose: 2000,
+      className: styles.errorFeedback,
+      closeOnClick: true,
+      draggable: false,
+      hideProgressBar: true,
+      pauseOnHover: true,
+      position: `bottom-right`,
+      toastId: `notifyToastError`,
+    });
+  };
+
   const onSubmit = handleSubmit(async (data) => {
     if (captchaRef.current) {
       captchaRef.current.execute();
@@ -94,10 +107,13 @@ export default function ContactForm() {
           const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
           const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
           const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLICKEY;
-          if (!serviceID || !templateID) return <Loading />
-          await emailjs.send(serviceID, templateID, templateParams);
-          toastifySuccess();
-          reset();
+          if (serviceID && templateID){
+            await emailjs.send(serviceID, templateID, templateParams);
+            toastifySuccess();
+            reset();
+          } else {
+            toastifyError();
+          }
         } catch (e) {
           console.log(`status:`, e);
         }
