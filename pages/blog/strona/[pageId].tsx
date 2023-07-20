@@ -112,6 +112,7 @@ export const getStaticPaths = async () => {
       return {
         props: {},
         notFound: true,
+
       };
     }
 
@@ -121,8 +122,8 @@ export const getStaticPaths = async () => {
       GetPostsPaginationQueryVariables
     >({
       variables: {
-        first: 6,
-        skip: 6 * (page - 1),
+        first: 2,
+        skip: 2 * (page - 1),
       },
       query: GetPostsPaginationDocument,
     });
@@ -138,5 +139,6 @@ export const getStaticPaths = async () => {
         page: page,
         pageSize: pageSize,
       },
+      revalidate:  60 * 15
     };
   };

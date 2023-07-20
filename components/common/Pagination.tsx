@@ -27,7 +27,7 @@ export default function Pagination({
     }
   }, []);
 
-  const totalPages = Math.ceil(postsNumber / 4);
+  const totalPages = Math.ceil(postsNumber / 2);
 
   if (totalPages > 0) {
     for (let i = 1; i <= totalPages; i++) {
@@ -52,7 +52,7 @@ export default function Pagination({
   return (
     <div className="inline-flex items-center justify-center gap-3">
       <button
-        className={`h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180
+        className={`h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white dark:bg-gray-50 text-gray-900 hover:shadow-lg hover:dark:bg-gray-100 rtl:rotate-180
         ${currentPage === 1 ? "hidden" : "flex"}`}
         onClick={() => handleDecrease()}
       >
@@ -78,8 +78,8 @@ export default function Pagination({
       </p>
 
       <button
-        className={`h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180
-      ${currentPage === totalPages ? "hidden" : "flex"}`}
+        className={`h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white dark:bg-gray-50 text-gray-900 hover:shadow-lg hover:dark:bg-gray-100 rtl:rotate-180
+        ${currentPage === totalPages ? "hidden" : "flex"}`}
         onClick={() => handleIncrease()}
       >
         <span className="sr-only">Następna Strona</span>

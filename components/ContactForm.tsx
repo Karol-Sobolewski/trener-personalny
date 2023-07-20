@@ -15,8 +15,7 @@ export default function ContactForm() {
   const captchaRef = useRef<HCaptcha>(null);
   const hCaptchaSiteKey = "1d32eb16-521e-4c05-97f2-b4213ac0c29a";
   const [isDarkMode, setDarkMode] = useState(false);
-  const nightwind = require("nightwind/helper");
-
+  const [formLoading, setFormLoading] = useState(false) 
   useEffect(() => {
     const mode = localStorage.getItem("nightwind-mode");
     if (mode === "dark") {
@@ -95,6 +94,7 @@ export default function ContactForm() {
     if (captchaRef.current) {
       captchaRef.current.execute();
       if (token) {
+      setFormLoading(true)
         try {
           const templateParams = {
             firstName: data.firstName,
@@ -104,19 +104,25 @@ export default function ContactForm() {
             message: data.message,
           };
 
-          const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-          const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-          const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLICKEY;
+          const serviceID = "service_exwa3po"
+          const templateID = "template_ikd912k"
+          const publicKey = "IiI-MyEcp_QssH9PQ"
           if (serviceID && templateID){
-            await emailjs.send(serviceID, templateID, templateParams);
+            await emailjs.send(serviceID, templateID, templateParams, publicKey);
             toastifySuccess();
             reset();
+            setFormLoading(false)
           } else {
             toastifyError();
+            setFormLoading(false)
           }
         } catch (e) {
           console.log(`status:`, e);
+          toastifyError();
+          setFormLoading(false)
         }
+      } else {
+        toastifyError();
       }
     }
   });
@@ -125,123 +131,127 @@ export default function ContactForm() {
     <section className="text-gray-900 rounded-lg dark:shadow-none md:mx-16 pb-8 shadow-sm hover:shadow-md px-4 py-8 mx-4 bg-white dark:bg-inherit  dark:border-slate-400">
       <div className="max-w-screen-xl px-4 flex justify-center align-middle ">
         <div className="max-w-3xl w-full">
-          <form className="grid grid-cols-6 gap-4" onSubmit={onSubmit}>
-            <div className="col-span-6 md:col-span-3">
-              <label
-                htmlFor="firstName"
-                className="block text-xs font-medium text-gray-700"
-              >
-                Imię*
-              </label>
+          {formLoading ? <Loading/> : 
+           <form className="grid grid-cols-6 gap-4" onSubmit={onSubmit}>
+           <div className="col-span-6 md:col-span-3">
+             <label
+               htmlFor="firstName"
+               className="block text-xs font-medium text-gray-700"
+             >
+               Imię*
+             </label>
 
-              <input
-                autoComplete="given-name"
-                type="text"
-                id="firstName"
-                className="mt-1 p-2.5 w-full rounded-md border-gray-100 shadow-sm sm:text-sm bg-gray-100"
-                {...register("firstName")}
-              />
-              <span role="alert" className="text-sm font-bold text-red-500">
-                {formState.errors.firstName?.message}
-              </span>
-            </div>
+             <input
+               autoComplete="given-name"
+               type="text"
+               id="firstName"
+               className="mt-1 p-2.5 w-full rounded-md border-gray-100 shadow-sm sm:text-sm bg-gray-100"
+               {...register("firstName")}
+             />
+             <span role="alert" className="text-sm font-bold text-red-500">
+               {formState.errors.firstName?.message}
+             </span>
+           </div>
 
-            <div className="col-span-6 md:col-span-3">
-              <label
-                htmlFor="lastName"
-                className="block text-xs font-medium text-gray-700"
-              >
-                Nazwisko*
-              </label>
+           <div className="col-span-6 md:col-span-3">
+             <label
+               htmlFor="lastName"
+               className="block text-xs font-medium text-gray-700"
+             >
+               Nazwisko*
+             </label>
 
-              <input
-                autoComplete="family-name"
-                type="text"
-                id="lastName"
-                {...register("lastName")}
-                className="mt-1 p-2.5 w-full rounded-md shadow-sm sm:text-sm bg-gray-100"
-              />
-              <span role="alert" className="text-sm font-bold text-red-500">
-                {formState.errors.lastName?.message}
-              </span>
-            </div>
+             <input
+               autoComplete="family-name"
+               type="text"
+               id="lastName"
+               {...register("lastName")}
+               className="mt-1 p-2.5 w-full rounded-md shadow-sm sm:text-sm bg-gray-100"
+             />
+             <span role="alert" className="text-sm font-bold text-red-500">
+               {formState.errors.lastName?.message}
+             </span>
+           </div>
 
-            <div className="col-span-6 md:col-span-3">
-              <label
-                htmlFor="email"
-                className="block text-xs font-medium text-gray-700 "
-              >
-                Email*
-              </label>
+           <div className="col-span-6 md:col-span-3">
+             <label
+               htmlFor="email"
+               className="block text-xs font-medium text-gray-700 "
+             >
+               Email*
+             </label>
 
-              <input
-                autoComplete="email"
-                type="text"
-                id="email"
-                {...register("email")}
-                className="mt-1 p-2.5 w-full rounded-md shadow-sm sm:text-sm bg-gray-100"
-              />
-              <span role="alert" className="text-sm font-bold text-red-500">
-                {formState.errors.email?.message}
-              </span>
-            </div>
+             <input
+               autoComplete="email"
+               type="text"
+               id="email"
+               {...register("email")}
+               className="mt-1 p-2.5 w-full rounded-md shadow-sm sm:text-sm bg-gray-100"
+             />
+             <span role="alert" className="text-sm font-bold text-red-500">
+               {formState.errors.email?.message}
+             </span>
+           </div>
 
-            <div className="col-span-6 md:col-span-3">
-              <label
-                htmlFor="phone"
-                className="block text-xs font-medium text-gray-700 "
-              >
-                Telefon
-              </label>
+           <div className="col-span-6 md:col-span-3">
+             <label
+               htmlFor="phone"
+               className="block text-xs font-medium text-gray-700 "
+             >
+               Telefon
+             </label>
 
-              <input
-                autoComplete="tel"
-                type="tel"
-                id="phone"
-                {...register("phone")}
-                className="mt-1 p-2.5 w-full rounded-md shadow-sm sm:text-sm bg-gray-100"
-              />
-              <span role="alert" className="text-sm font-bold text-red-500">
-                {formState.errors.phone?.message}
-              </span>
-            </div>
+             <input
+               autoComplete="tel"
+               type="tel"
+               id="phone"
+               {...register("phone")}
+               className="mt-1 p-2.5 w-full rounded-md shadow-sm sm:text-sm bg-gray-100"
+             />
+             <span role="alert" className="text-sm font-bold text-red-500">
+               {formState.errors.phone?.message}
+             </span>
+           </div>
 
-            <div className="col-span-6">
-              <label
-                htmlFor="message"
-                className="block text-xs font-medium text-gray-700 "
-              >
-                Wiadomość*
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                cols={60}
-                {...register("message")}
-                className="mt-1 p-2.5 w-full rounded-md shadow-sm sm:text-sm bg-gray-100"
-              />
-              <span role="alert" className="text-sm font-bold text-red-500">
-                {formState.errors.message?.message}
-              </span>
-            </div>
-            <div className="col-span-6 flex align-middle justify-center w-full">
-              <HCaptcha
-                sitekey={hCaptchaSiteKey}
-                onVerify={setToken}
-                ref={captchaRef}
-                theme={isDarkMode ? "dark" : "light"}
-              />
-            </div>
-            <div className="col-span-6 flex align-middle justify-center w-full">
-              <button
-                disabled={!token}
-                type="submit"
-                className="block rounded-md bg-red-700 p-4 text-sm text-gray-100 font-bold transition hover:shadow-lg hover:bg-red-700/75 hover:dark:bg-red-500/75 dark:bg-red-200 dark:text-gray-900"
-              >
-                Wyślij wiadomość
-              </button>
-            </div>
-          </form>
+           <div className="col-span-6">
+             <label
+               htmlFor="message"
+               className="block text-xs font-medium text-gray-700 "
+             >
+               Wiadomość*
+             </label>
+             <textarea
+               id="message"
+               rows={5}
+               cols={60}
+               {...register("message")}
+               className="mt-1 p-2.5 w-full rounded-md shadow-sm sm:text-sm bg-gray-100"
+             />
+             <span role="alert" className="text-sm font-bold text-red-500">
+               {formState.errors.message?.message}
+             </span>
+           </div>
+           <div className="col-span-6 flex align-middle justify-center w-full">
+             <HCaptcha
+               sitekey={hCaptchaSiteKey}
+               onVerify={setToken}
+               ref={captchaRef}
+               theme={isDarkMode ? "dark" : "light"}
+             />
+           </div>
+           <div className="col-span-6 flex align-middle justify-center w-full">
+             <button
+               disabled={!token}
+               type="submit"
+               className={`block rounded-md p-4 text-sm font-bold transition hover:shadow-lg  text-gray-100 
+               ${!token ? "bg-red-700/10 dark:text-gray-100/50" :  "bg-red-700 hover:bg-red-700/75 hover:dark:bg-red-500/75 dark:bg-red-200 dark:text-gray-900"}`}
+             >
+               Wyślij wiadomość
+             </button>
+           </div>
+         </form>
+          }
+         
         </div>
       </div>
       <ToastContainer />
