@@ -12,7 +12,10 @@ export default function ContactPage() {
         <title>Kontakt - Warszawa - Radek Trener</title>
         <meta name="description" content="Kontakt" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo-96x96.png" />
+        <meta name="apple-mobile-web-app-status-bar" content="#b91c1c" />
       </Head>
       <Main>
         <section>

@@ -8,6 +8,7 @@ import emailjs from "emailjs-com";
 import styles from "./ContactForm.module.scss";
 import { useEffect, useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import Loading from "./common/Loading";
 
 export default function ContactForm() {
   const [token, setToken] = useState<string | null>(null);
@@ -92,11 +93,10 @@ export default function ContactForm() {
 
           const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
           const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-          const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
-
-          // await emailjs.send(serviceID, templateID, templateParams, userId);
+          const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLICKEY;
+          if (!serviceID || !templateID) return <Loading />
+          await emailjs.send(serviceID, templateID, templateParams);
           toastifySuccess();
-
           reset();
         } catch (e) {
           console.log(`status:`, e);

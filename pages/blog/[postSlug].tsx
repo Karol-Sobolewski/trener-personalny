@@ -35,7 +35,10 @@ export default function BlogPage({
         <title>{data.post.title} - Warszawa - Radek Trener</title>
         <meta name="description" content={data.post.excerpt || "to jest typowy content"} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo-96x96.png" />
+        <meta name="apple-mobile-web-app-status-bar" content="#b91c1c" />
       </Head>
       <Main>
         <div className="px-4 py-12 sm:px-6 md:py-16 lg:px-16 ">

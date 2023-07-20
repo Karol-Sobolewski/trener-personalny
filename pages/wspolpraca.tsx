@@ -78,7 +78,10 @@ export default function About() {
         </title>
         <meta name="description" content="Współpraca" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo-96x96.png" />
+        <meta name="apple-mobile-web-app-status-bar" content="#b91c1c" />
       </Head>
       <Main>
         <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 text-center pt-16">
