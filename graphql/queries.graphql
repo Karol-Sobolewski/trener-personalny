@@ -49,10 +49,7 @@ query GetPostBySlug($slug: String) {
       markdown
     }
     coverImage {
-      url
-      fileName
-      height
-      width
+      ...CoverImage
     }
   }
 }

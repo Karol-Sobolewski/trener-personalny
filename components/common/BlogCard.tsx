@@ -11,7 +11,7 @@ export default function BlogCard(data: PostContentFragment) {
           height={300}
           width={300}
           alt={data.title}
-          src={data.coverImage.url}
+          src={data.coverImage!.url}
           className="w-full object-cover"
         />
       </Link>
@@ -34,6 +34,11 @@ export default function BlogCard(data: PostContentFragment) {
               {data.excerpt}
             </p>
           </div>
+        </Link>
+        <Link href={`blog/${data.slug}`} title="Przeczytaj więcej">
+          <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 underline">
+            Przeczytaj więcej
+          </p>
         </Link>
       </div>
     </article>

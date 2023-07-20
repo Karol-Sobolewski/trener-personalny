@@ -90,7 +90,7 @@ export default function BlogPage({
               height={1920}
               width={1080}
               alt={data.post.title}
-              src={data.post.coverImage.url}
+              src={data.post.coverImage!.url}
               className="w-full object-cover pb-4 md:pb-8"
             />
             <article className="prose lg:prose-xl p-4 text-justify">

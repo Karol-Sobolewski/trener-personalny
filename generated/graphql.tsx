@@ -1448,7 +1448,7 @@ export type Post = Node & {
   /** Write your blog post! */
   content: RichText;
   /** Upload or select a cover image to set as your Featured Image */
-  coverImage: Asset;
+  coverImage?: Maybe<Asset>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -1558,7 +1558,7 @@ export type PostConnection = {
 
 export type PostCreateInput = {
   content: Scalars['RichTextAST'];
-  coverImage: AssetCreateOneInlineInput;
+  coverImage?: InputMaybe<AssetCreateOneInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   date: Scalars['Date'];
   excerpt?: InputMaybe<Scalars['String']>;
@@ -4512,12 +4512,12 @@ export type GetPostsPaginationQueryVariables = Exact<{
 }>;
 
 
-export type GetPostsPaginationQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, slug?: string | null, title: string, excerpt?: string | null, createdAt: any, coverImage: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } }> };
+export type GetPostsPaginationQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, slug?: string | null, title: string, excerpt?: string | null, createdAt: any, coverImage?: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } | null }> };
 
 export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, slug?: string | null, title: string, excerpt?: string | null, createdAt: any, coverImage: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } }> };
+export type GetPostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, slug?: string | null, title: string, excerpt?: string | null, createdAt: any, coverImage?: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } | null }> };
 
 export type GetPostsSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4529,9 +4529,9 @@ export type GetPostBySlugQueryVariables = Exact<{
 }>;
 
 
-export type GetPostBySlugQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, slug?: string | null, title: string, excerpt?: string | null, createdAt: any, content: { __typename?: 'RichText', markdown: string }, coverImage: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } } | null };
+export type GetPostBySlugQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, slug?: string | null, title: string, excerpt?: string | null, createdAt: any, content: { __typename?: 'RichText', markdown: string }, coverImage?: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } | null } | null };
 
-export type PostContentFragment = { __typename?: 'Post', id: string, title: string, excerpt?: string | null, createdAt: any, slug?: string | null, coverImage: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } };
+export type PostContentFragment = { __typename?: 'Post', id: string, title: string, excerpt?: string | null, createdAt: any, slug?: string | null, coverImage?: { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null } | null };
 
 export type CoverImageFragment = { __typename?: 'Asset', url: string, fileName: string, height?: number | null, width?: number | null };
 
@@ -4721,14 +4721,11 @@ export const GetPostBySlugDocument = gql`
       markdown
     }
     coverImage {
-      url
-      fileName
-      height
-      width
+      ...CoverImage
     }
   }
 }
-    `;
+    ${CoverImageFragmentDoc}`;
 
 /**
  * __useGetPostBySlugQuery__
