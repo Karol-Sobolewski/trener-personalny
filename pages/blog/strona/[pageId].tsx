@@ -58,7 +58,7 @@ export default function BlogPage({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/logo-96x96.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-status-bar" content="#b91c1c" />
       </Head>
       <Main>
@@ -109,8 +109,8 @@ export const getStaticPaths = async () => {
 
     const page = Number(params?.pageId) || 1;
 
-    //! PostsPerPage
-    
+    //! PostsPerPage + index
+
     const postsPerPage = 6
 
     if (!params?.pageId) {
