@@ -114,8 +114,8 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-        <section className="text-gray-900 text-center rounded-lg dark:shadow-none md:mx-16 mb-16 pb-8 shadow-sm hover:shadow-md px-4 py-8 mx-4 bg-white dark:bg-inherit  dark:border-slate-400">
-          <div className="max-w-screen-xl px-4 flex justify-center align-middle ">
+        <section className="text-gray-900 text-center rounded-lg dark:shadow-none md:mx-16 mb-16 pt-16 pb-8 shadow-sm hover:shadow-md px-4 py-8 mx-4 bg-white dark:bg-inherit  dark:border-slate-400">
+          <div className="max-w-screen-xl px-4 flex justify-center align-middle mb-16">
             <div className="max-w-3xl w-full">
               <dl>
                 <a
@@ -152,6 +152,17 @@ export default function ContactPage() {
                 </a>
               </dl>
             </div>
+          </div>
+          <div className="max-w-screen-xl px-4 flex justify-center align-middle mb-8">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9778.320829310831!2d20.9925103!3d52.2146758!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecdce4a930207%3A0x1ed62dc649e93369!2sRadek%20Senski%20-%20Trener!5e0!3m2!1spl!2spl!4v1689926750806!5m2!1spl!2spl"
+              width="600"
+              height="450"
+              // style="border:0;"
+              // allowfullscreen=""
+              loading="lazy"
+              // referrerpolicy="no-referrer-when-downgrade"
+            />
           </div>
         </section>
         <ContactForm />
