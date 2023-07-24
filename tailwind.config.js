@@ -14,4 +14,5 @@ module.exports = {
   plugins: [],
    darkMode: "class",
   plugins: [require("nightwind"), require("@tailwindcss/typography")],
+  important: true,
 }

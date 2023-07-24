@@ -93,7 +93,7 @@ export default function BlogPage({
               src={data.post.coverImage!.url}
               className="w-full object-cover pb-4 md:pb-8"
             />
-            <article className="prose lg:prose-xl p-4 text-justify">
+            <article className="prose lg:prose-xl p-4 text-justify text-gray-900 dark:prose-invert">
 
             <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
             </article>
