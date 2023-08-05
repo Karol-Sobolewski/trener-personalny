@@ -7,6 +7,7 @@ import { apolloClient } from "../../graphql/apolloClient";
 import Main from "../../components/layout/Main";
 import remarkGfm from 'remark-gfm';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from "rehype-raw";
 
 import { GetPostBySlugDocument, GetPostBySlugQuery, GetPostBySlugQueryVariables, GetPostsSlugsDocument, GetPostsSlugsQuery } from "../../generated/graphql";
 import { useEffect } from "react";
@@ -32,8 +33,8 @@ export default function BlogPage({
   return (
     <>
       <Head>
-        <title>{data.post.title} - Warszawa - Radek Trener</title>
-        <meta name="description" content={data.post.excerpt || "to jest typowy content"} />
+        <title>{data.post.title} - Warszawa Mokotów  - Radek Trener</title>
+        <meta name="description" content={data.post.excerpt || ""} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
@@ -95,7 +96,7 @@ export default function BlogPage({
             />
             <article className="prose lg:prose-xl p-4 text-justify text-gray-900 dark:prose-invert">
 
-            <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
+            <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} linkTarget="_blank" />
             </article>
             <button type="button" onClick={() => router.back()}>
               <span className="text-red-700 dark:text-red-200 mr-2">←</span>

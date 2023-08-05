@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Radosław Senski trener personalny - Warszawa - Radek Trener</title>
+        <title>Radosław Senski trener personalny - Warszawa Mokotów - Radek Trener</title>
         <meta
           name="description"
           content="Osiągnij swoje cele treningowe z Radkiem Senskim - Trenerem Personalnym. Indywidualne podejście, profesjonalne wsparcie i motywacja. Zdobądź wymarzoną formę!"

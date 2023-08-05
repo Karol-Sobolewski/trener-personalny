@@ -11,8 +11,11 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>O mnie - Warszawa - Radek Trener</title>
-        <meta name="description" content="O mnie" />
+        <title>O mnie - Warszawa Mokotów - Radek Trener</title>
+        <meta
+          name="description"
+          content="Jestem doświadczonym trenerem personalnym, gotowym pomóc Ci osiągnąć Twoje cele zdrowotne i fitnessowe. Zapraszam na moją stronę, gdzie odkryjesz, jakie metody treningowe stosuję, aby pomóc moim podopiecznym osiągnąć najlepsze wyniki. Moje indywidualne podejście i wsparcie będą Twoją kluczem do sukcesu. Niezależnie od Twojego poziomu zaawansowania czy celów, wspólnie dopracujemy plan, który pomoże Ci odnieść sukces i cieszyć się zdrowszym życiem. Dołącz do mnie w tej wyjątkowej przygodzie fitnessu i przekonaj się, jak trening może zmienić Twoje życie na lepsze."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />

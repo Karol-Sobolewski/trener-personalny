@@ -268,7 +268,7 @@ export default function Footer() {
                       target="_blank"
                       title="Sprawdź na mapie"
                     >
-                      Wawelska 5 <br /> 02-034 Warszawa
+                      Wawelska 5 <br /> 02-034 Warszawa - Mokotów
                     </a>
                   </address>
                 </li>

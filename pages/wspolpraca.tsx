@@ -74,9 +74,12 @@ export default function About() {
     <>
       <Head>
         <title>
-          Współpraca z trenerem personalnym - Warszawa - Radek Trener
+          Współpraca z trenerem personalnym - Warszawa Mokotów - Radek Trener
         </title>
-        <meta name="description" content="Współpraca" />
+        <meta
+          name="description"
+          content="Odkryj atrakcyjny cennik i możliwości współpracy z doświadczonym trenerem personalnym. Moja strona z cennikiem oferuje przejrzyste i konkurencyjne opcje cenowe, które są dopasowane do różnych potrzeb i celów fitnessowych. Znajdziesz tu szczegółowe informacje na temat dostępnych pakietów treningowych, indywidualnych sesji oraz innych korzyści płynących z współpracy ze mną. Niezależnie od Twojego poziomu zaawansowania czy doświadczenia, jestem gotów wziąć na siebie rolę mentora i wsparcia w Twojej drodze do osiągnięcia sukcesu fitness. Dołącz do szerokiego grona zadowolonych klientów, którzy cieszą się zdrowszym i bardziej aktywnym stylem życia dzięki profesjonalnemu treningowi. Zainwestuj w siebie i zacznij budować lepszą wersję siebie już dziś!"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />

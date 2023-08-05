@@ -53,8 +53,8 @@ export default function BlogPage({
   return (
     <>
       <Head>
-        <title>Blog - Warszawa - Radek Trener</title>
-        <meta name="description" content="Blog" />
+        <title>Blog - Warszawa Mokotów  - Radek Trener</title>
+        <meta name="description" content={'Odwiedź drugą' + page + 'mojego bloga i kontynuuj swoją inspirującą podróż ku zdrowszemu życiu. Znajdziesz tu bogactwo ciekawych treści, zaawansowanych porad i eksperckich wskazówek, które pomogą Ci w osiągnięciu doskonałej kondycji fizycznej i mentalnej. Odkryj różnorodne treningi, plany żywieniowe, a także unikalne wyzwania, które pobudzą Twoją motywację i przyniosą wymierne rezultaty. Bądź na bieżąco z najnowszymi osiągnięciami w świecie fitnessu i zainspiruj się sukcesami innych osób, które już zmieniły swoje życie na lepsze.'} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
