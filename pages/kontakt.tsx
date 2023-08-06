@@ -128,7 +128,7 @@ export default function ContactPage() {
                   className="flex flex-col justify-center align-middle"
                 >
                   <dt className="order-last text-lg font-medium text-gray-500 pt-4">
-                    Wawelska 5 <br /> 02-034 Warszawa
+                    Wawelska 5 <br /> 02-034 Warszawa - Mokotów
                   </dt>
 
                   <dd className="text-4xl font-extrabold text-red-700 dark:text-red-200 md:text-5xl flex flex-col justify-center items-center">
