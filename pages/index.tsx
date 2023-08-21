@@ -21,6 +21,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo-96x96.png" />
         <meta name="apple-mobile-web-app-status-bar" content="#b91c1c" />
+        <meta name="google-site-verification" content="f-TWWsF5HInN9w5oAA-fKaQt02khacMeFtkBZFaB0ZM" />
       </Head>
       <Hero />
       <Main>
