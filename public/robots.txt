@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://radeksenski.pl/
+
+# Sitemaps
+Sitemap: https://radeksenski.pl/sitemap.xml

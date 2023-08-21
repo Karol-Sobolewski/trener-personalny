@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import Main from "../components/layout/Main";
 
@@ -22,10 +23,16 @@ export default function FourOhFour() {
           <div className="text-center">
             <h1 className="font-black text-gray-200 text-9xl">404</h1>
 
+            <Image
+              alt="404"
+              src="/images/404.png"
+              width={512}
+              height={512}
+              className="h-56 w-full object-contain"
+            />
             <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Uh-oh!
+              Chyba ominąłeś dzień nóg
             </p>
-
             <p className="mt-4 text-gray-500">Brak strony</p>
 
             <Link

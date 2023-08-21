@@ -1468,13 +1468,9 @@ export type Post = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  /** Attach an SEO model to this post */
-  seo?: Maybe<Seo>;
   slug?: Maybe<Scalars['String']>;
   /** System stage field */
   stage: Stage;
-  /** Add any relevant tags to this blog post */
-  tags: Array<Scalars['String']>;
   /** Name your blog post! */
   title: Scalars['String'];
   /** The time the document was updated */
@@ -1528,12 +1524,6 @@ export type PostScheduledInArgs = {
 };
 
 
-export type PostSeoArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
 export type PostUpdatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
@@ -1562,9 +1552,7 @@ export type PostCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   date: Scalars['Date'];
   excerpt?: InputMaybe<Scalars['String']>;
-  seo?: InputMaybe<SeoCreateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
-  tags?: InputMaybe<Array<Scalars['String']>>;
   title: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -1694,7 +1682,6 @@ export type PostManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  seo?: InputMaybe<SeoWhereInput>;
   slug?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   slug_contains?: InputMaybe<Scalars['String']>;
@@ -1714,16 +1701,6 @@ export type PostManyWhereInput = {
   slug_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   slug_starts_with?: InputMaybe<Scalars['String']>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  tags?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  tags_contains_all?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  tags_contains_none?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  tags_contains_some?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  tags_not?: InputMaybe<Array<Scalars['String']>>;
   title?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   title_contains?: InputMaybe<Scalars['String']>;
@@ -1774,8 +1751,6 @@ export enum PostOrderByInput {
   PublishedAtDesc = 'publishedAt_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
-  TagsAsc = 'tags_ASC',
-  TagsDesc = 'tags_DESC',
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -1787,9 +1762,7 @@ export type PostUpdateInput = {
   coverImage?: InputMaybe<AssetUpdateOneInlineInput>;
   date?: InputMaybe<Scalars['Date']>;
   excerpt?: InputMaybe<Scalars['String']>;
-  seo?: InputMaybe<SeoUpdateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
-  tags?: InputMaybe<Array<Scalars['String']>>;
   title?: InputMaybe<Scalars['String']>;
 };
 
@@ -1814,7 +1787,6 @@ export type PostUpdateManyInput = {
   content?: InputMaybe<Scalars['RichTextAST']>;
   date?: InputMaybe<Scalars['Date']>;
   excerpt?: InputMaybe<Scalars['String']>;
-  tags?: InputMaybe<Array<Scalars['String']>>;
   title?: InputMaybe<Scalars['String']>;
 };
 
@@ -1969,7 +1941,6 @@ export type PostWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  seo?: InputMaybe<SeoWhereInput>;
   slug?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   slug_contains?: InputMaybe<Scalars['String']>;
@@ -1989,16 +1960,6 @@ export type PostWhereInput = {
   slug_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   slug_starts_with?: InputMaybe<Scalars['String']>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  tags?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  tags_contains_all?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  tags_contains_none?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  tags_contains_some?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  tags_not?: InputMaybe<Array<Scalars['String']>>;
   title?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   title_contains?: InputMaybe<Scalars['String']>;
@@ -3394,8 +3355,6 @@ export type Seo = Node & {
   image?: Maybe<Asset>;
   /** Select your focus keywords */
   keywords: Array<Scalars['String']>;
-  /** What pages and blog posts would this SEO apply to? */
-  parent?: Maybe<SeoParent>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -3433,12 +3392,6 @@ export type SeoHistoryArgs = {
 
 
 export type SeoImageArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type SeoParentArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
@@ -3489,7 +3442,6 @@ export type SeoCreateInput = {
   description?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<AssetCreateOneInlineInput>;
   keywords?: InputMaybe<Array<Scalars['String']>>;
-  parent?: InputMaybe<SeoParentCreateOneInlineInput>;
   title?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -3595,10 +3547,6 @@ export type SeoManyWhereInput = {
   keywords_contains_some?: InputMaybe<Array<Scalars['String']>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
   keywords_not?: InputMaybe<Array<Scalars['String']>>;
-  /** All values in which the union is connected to the given models */
-  parent?: InputMaybe<SeoParentWhereInput>;
-  /** All values in which the union is empty */
-  parent_empty?: InputMaybe<Scalars['Boolean']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -3672,91 +3620,10 @@ export enum SeoOrderByInput {
   UpdatedAtDesc = 'updatedAt_DESC'
 }
 
-export type SeoParent = Post;
-
-export type SeoParentConnectInput = {
-  Post?: InputMaybe<PostConnectInput>;
-};
-
-export type SeoParentCreateInput = {
-  Post?: InputMaybe<PostCreateInput>;
-};
-
-export type SeoParentCreateManyInlineInput = {
-  /** Connect multiple existing SeoParent documents */
-  connect?: InputMaybe<Array<SeoParentWhereUniqueInput>>;
-  /** Create and connect multiple existing SeoParent documents */
-  create?: InputMaybe<Array<SeoParentCreateInput>>;
-};
-
-export type SeoParentCreateOneInlineInput = {
-  /** Connect one existing SeoParent document */
-  connect?: InputMaybe<SeoParentWhereUniqueInput>;
-  /** Create and connect one SeoParent document */
-  create?: InputMaybe<SeoParentCreateInput>;
-};
-
-export type SeoParentUpdateInput = {
-  Post?: InputMaybe<PostUpdateInput>;
-};
-
-export type SeoParentUpdateManyInlineInput = {
-  /** Connect multiple existing SeoParent documents */
-  connect?: InputMaybe<Array<SeoParentConnectInput>>;
-  /** Create and connect multiple SeoParent documents */
-  create?: InputMaybe<Array<SeoParentCreateInput>>;
-  /** Delete multiple SeoParent documents */
-  delete?: InputMaybe<Array<SeoParentWhereUniqueInput>>;
-  /** Disconnect multiple SeoParent documents */
-  disconnect?: InputMaybe<Array<SeoParentWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing SeoParent documents */
-  set?: InputMaybe<Array<SeoParentWhereUniqueInput>>;
-  /** Update multiple SeoParent documents */
-  update?: InputMaybe<Array<SeoParentUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple SeoParent documents */
-  upsert?: InputMaybe<Array<SeoParentUpsertWithNestedWhereUniqueInput>>;
-};
-
-export type SeoParentUpdateManyWithNestedWhereInput = {
-  Post?: InputMaybe<PostUpdateManyWithNestedWhereInput>;
-};
-
-export type SeoParentUpdateOneInlineInput = {
-  /** Connect existing SeoParent document */
-  connect?: InputMaybe<SeoParentWhereUniqueInput>;
-  /** Create and connect one SeoParent document */
-  create?: InputMaybe<SeoParentCreateInput>;
-  /** Delete currently connected SeoParent document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Disconnect currently connected SeoParent document */
-  disconnect?: InputMaybe<Scalars['Boolean']>;
-  /** Update single SeoParent document */
-  update?: InputMaybe<SeoParentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single SeoParent document */
-  upsert?: InputMaybe<SeoParentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type SeoParentUpdateWithNestedWhereUniqueInput = {
-  Post?: InputMaybe<PostUpdateWithNestedWhereUniqueInput>;
-};
-
-export type SeoParentUpsertWithNestedWhereUniqueInput = {
-  Post?: InputMaybe<PostUpsertWithNestedWhereUniqueInput>;
-};
-
-export type SeoParentWhereInput = {
-  Post?: InputMaybe<PostWhereInput>;
-};
-
-export type SeoParentWhereUniqueInput = {
-  Post?: InputMaybe<PostWhereUniqueInput>;
-};
-
 export type SeoUpdateInput = {
   description?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
   keywords?: InputMaybe<Array<Scalars['String']>>;
-  parent?: InputMaybe<SeoParentUpdateOneInlineInput>;
   title?: InputMaybe<Scalars['String']>;
 };
 
@@ -3910,10 +3777,6 @@ export type SeoWhereInput = {
   keywords_contains_some?: InputMaybe<Array<Scalars['String']>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
   keywords_not?: InputMaybe<Array<Scalars['String']>>;
-  /** All values in which the union is connected to the given models */
-  parent?: InputMaybe<SeoParentWhereInput>;
-  /** All values in which the union is empty */
-  parent_empty?: InputMaybe<Scalars['Boolean']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
