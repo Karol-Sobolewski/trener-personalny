@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://radeksenski.pl/',
+    siteUrl: 'https://www.radeksenski.pl/',
     generateRobotsTxt: true,
     sitemapSize: 7000,
   };
