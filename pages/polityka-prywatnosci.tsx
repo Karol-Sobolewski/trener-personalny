@@ -256,8 +256,12 @@ export default function GDPRPage() {
                       </li>
                     </ul>
                   </li>
-                  <li>
+                  <li className="relative">
                     Informacja o&nbsp;plikach cookies
+                    <div
+                      className="absolute -top-20 md:-top-32 left-0"
+                      id="cookies"
+                    />
                     <ul className="text-lg mt-4 mb-4  font-normal list-decimal">
                       <li>Serwis korzysta z&nbsp;plików cookies.</li>
                       <li>

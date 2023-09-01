@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import AboutMe from "../components/about/AboutMe";
+import GoogleAnalytics from "../components/GAnalytics";
 import Hero from "../components/layout/Hero";
 import Main from "../components/layout/Main";
 
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
         <link rel="apple-touch-icon" href="/logo-96x96.png" />
         <meta name="apple-mobile-web-app-status-bar" content="#b91c1c" />
         <meta name="google-site-verification" content="f-TWWsF5HInN9w5oAA-fKaQt02khacMeFtkBZFaB0ZM" />
+
       </Head>
       <Hero />
       <Main>
