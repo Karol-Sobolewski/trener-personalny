@@ -279,23 +279,23 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-gray-100 pt-6">
           <div className="text-center sm:flex sm:justify-between sm:text-left">
-            {/* <span className="text-sm text-gray-500 dark:text-gray-300">
-              <a
+            <span className="text-sm text-gray-500 dark:text-gray-300">
+              {/* <a
                 className="inline-block text-gray-500 dark:text-gray-300  underline transition hover:text-gray-700/75 dark:hover:text-gray-400/75"
-                href="/"
+                href="/regulamin"
               >
                 Regulamin
               </a>
 
-              <span>{` `}</span>
+              <span>{` `}</span> */}
 
               <a
                 className="inline-blocktext-gray-500 dark:text-gray-300  underline transition hover:text-gray-700/75 dark:hover:text-gray-400/75"
-                href="/"
+                href="/polityka-prywatnosci"
               >
                 Polityka prywatności
               </a>
-            </span> */}
+            </span>
 
             <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
               &copy; 2023. Designed & Coded by {` `}
