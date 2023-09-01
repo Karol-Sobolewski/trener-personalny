@@ -33,7 +33,7 @@ export default function BlogPage({
   return (
     <>
       <Head>
-        <title>{data.post.title} - Warszawa Mokotów  - Radek Trener</title>
+        <title>{data.post.title} - Warszawa Centrum  - Radek Trener</title>
         <meta name="description" content={data.post.excerpt || ""} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />

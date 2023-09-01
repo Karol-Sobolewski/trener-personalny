@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <>
       <Head>
-        <title>Kontakt - Warszawa Mokotów - Radek Trener</title>
+        <title>Kontakt - Warszawa Centrum - Radek Trener</title>
         <meta
           name="description"
           content="Chcesz osiągnąć swoje fitnessowe cele i cieszyć się zdrowszym życiem? Skontaktuj się ze mną, doświadczonym trenerem personalnym, który pomoże Ci zrealizować Twoje marzenia o doskonałej kondycji i sylwetce. Zapraszam do kontaktu na mojej stronie, gdzie dowiesz się więcej o moim profesjonalnym podejściu do treningu. Razem dopracujemy spersonalizowany plan dostosowany do Twoich potrzeb, umiejętności i celów. Bądź gotowy na pozytywną transformację swojego ciała i ducha. Nie zwlekaj, skontaktuj się już dziś, aby rozpocząć swoją drogę do lepszego, bardziej aktywnego życia. Czekam na Twój telefon lub wiadomość!"
@@ -128,7 +128,7 @@ export default function ContactPage() {
                   className="flex flex-col justify-center align-middle"
                 >
                   <dt className="order-last text-lg font-medium text-gray-500 pt-4">
-                    Wawelska 5 <br /> 02-034 Warszawa - Mokotów
+                    Nowogrodzka 50/54 <br /> 00-695 Warszawa - Centrum
                   </dt>
 
                   <dd className="text-4xl font-extrabold text-red-700 dark:text-red-200 md:text-5xl flex flex-col justify-center items-center">

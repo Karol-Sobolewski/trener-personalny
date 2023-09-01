@@ -6,7 +6,7 @@ export default function GDPRPage() {
   return (
     <>
       <Head>
-        <title>Polityka prywatności - Warszawa Mokotów - Radek Trener</title>
+        <title>Polityka prywatności - Warszawa Centrum - Radek Trener</title>
         <meta
           name="description"
           content="Zapoznaj się z polityką prywatności - Dowiedz się, jakie informacje gromadzimy, jak je wykorzystujemy i chronimy. Nasza kompleksowa polityka prywatności zapewnia klarowne wytyczne dotyczące ochrony Twoich danych osobowych. Przeczytaj, aby dowiedzieć się, jak dbamy o Twoją prywatność."

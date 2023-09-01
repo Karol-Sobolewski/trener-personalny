@@ -54,7 +54,7 @@ export default function BlogPage({
   return (
     <>
       <Head>
-        <title>Blog - Warszawa Mokotów  - Radek Trener</title>
+        <title>Blog - Warszawa Centrum  - Radek Trener</title>
         <meta name="description" content="Odkryj fascynujący świat fitnessu i zdrowego stylu życia na moim blogu. Znajdziesz tu inspirujące artykuły, porady i cenne wskazówki na temat treningu, odżywiania i osiągania wymarzonej formy fizycznej. Bądź na bieżąco z najnowszymi trendami i badaniami w dziedzinie fitnessu, które pomogą Ci osiągnąć najlepsze rezultaty. Zapraszam Cię do dołączenia do społeczności, która dąży do zdrowszego i bardziej aktywnego życia. Niezależnie od Twojego poziomu zaawansowania, znajdziesz tu cenne wskazówki, które pomogą Ci pokonać swoje wyzwania i osiągnąć sukces fitness." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

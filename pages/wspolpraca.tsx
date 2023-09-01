@@ -74,7 +74,7 @@ export default function About() {
     <>
       <Head>
         <title>
-          Współpraca z trenerem personalnym - Warszawa Mokotów - Radek Trener
+          Współpraca z trenerem personalnym - Warszawa Centrum - Radek Trener
         </title>
         <meta
           name="description"

@@ -7,7 +7,7 @@ export default function FourOhFour() {
   return (
     <>
       <Head>
-        <title>404 - Warszawa Mokotów - Radek Trener</title>
+        <title>404 - Warszawa Centrum - Radek Trener</title>
         <meta
           name="description"
           content="Ups! Wygląda na to, że trafiłeś na stronę 404 - nie ma strony, której szukasz. Ale nie martw się! Jesteśmy tutaj, aby Ci pomóc. Przekierujemy Cię na właściwą ścieżkę, abyś mógł kontynuować swoje odkrywanie. Zapraszamy na stronę główną, gdzie znajdziesz interesujące treści, ciekawe artykuły i wiele innych atrakcji. Nie pozwól, aby to jedno zawirowanie pokrzyżowało Twoje plany. Razem z nami znajdziesz to, czego szukasz. Dołącz do naszej społeczności i ciesz się przygodą wirtualnego świata pełnego możliwości i fascynujących treści."
