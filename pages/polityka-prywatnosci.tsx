@@ -283,12 +283,12 @@ export default function GDPRPage() {
                         Pliki cookies wykorzystywane są w&nbsp;następujących
                         celach:
                         <ul className="list-disc ml-8">
-                          <li>
+                          {/* <li>
                             utrzymanie sesji użytkownika Serwisu (po
                             zalogowaniu), dzięki której użytkownik nie musi na
                             każdej podstronie Serwisu ponownie wpisywać loginu
                             i&nbsp;hasła;
-                          </li>
+                          </li> */}
                           <li>
                             realizacji celów określonych powyżej w&nbsp;części
                             "Istotne techniki marketingowe";
