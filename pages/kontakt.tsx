@@ -122,7 +122,7 @@ export default function ContactPage() {
             <div className="max-w-3xl w-full">
               <dl>
                 <a
-                  href="https://maps.app.goo.gl/SbazARXSfZMtg9Hn7"
+                  href="https://www.google.com/maps/dir//Radek+Senski+-+Trener+Nowogrodzka+50%2F54+00-695+Warszawa/@52.2279447,21.0073828,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x471ecdce4a930207:0x1ed62dc649e93369!2m2!1d21.0073828!2d52.2279447?entry=ttu"
                   target="_blank"
                   title="Sprawdź na mapie"
                   className="flex flex-col justify-center align-middle"
