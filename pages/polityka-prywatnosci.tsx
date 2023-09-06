@@ -39,8 +39,11 @@ export default function GDPRPage() {
                       </li>
                       <li>
                         Operatorem serwisu oraz Administratorem danych osobowych
-                        jest: Radosław Senski Trener ul.&nbsp;Okulickiego
-                        7/23,&nbsp;85-794, Bydgoszcz.
+                        jest:{" "}
+                        <span className="text-transform: uppercase">
+                          Radosław Senski Trener
+                        </span>{" "}
+                        ul.&nbsp;Okulickiego 7/23,&nbsp;85-794, Bydgoszcz.
                       </li>
                       <li>
                         Adres kontaktowy poczty elektronicznej operatora:{" "}

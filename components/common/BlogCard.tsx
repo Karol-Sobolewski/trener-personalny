@@ -5,7 +5,7 @@ import { PostContentFragment } from "../../generated/graphql";
 export default function BlogCard(data: PostContentFragment) {
   const date = new Date(data.createdAt).toLocaleDateString("pl-PL");
   return (
-    <article className="flex flex-col flex[0 0 1] md:flex[0 0 calc(33.33%-20px)] w-72 text-center p-6 m-4 text-gray-900 bg-white dark:bg-gray-50 rounded-lg border border-gray-100 shadow dark:border-gray-600">
+    <article className="flex flex-col flex[0 0 1] md:flex[0 0 calc(33.33%-20px)] w-72 text-center p-6 m-4 text-gray-900 bg-white dark:bg-gray-50 rounded-lg border border-gray-100 shadow dark:border-gray-600 duration-150 hover:shadow-xl">
       <Link href={`blog/${data.slug}`}>
         <Image
           height={300}

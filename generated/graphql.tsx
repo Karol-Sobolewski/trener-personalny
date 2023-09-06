@@ -1445,19 +1445,26 @@ export type PageInfo = {
 
 export type Post = Node & {
   __typename?: 'Post';
-  /** Write your blog post! */
+  /**
+   * Postaraj się umieścić główne słowa kluczowe w tytule, nagłówkach, pierwszym akapicie i w naturalny sposób w treści artykułu. Unikaj jednak nadmiernego ich powtarzania, co może negatywnie wpłynąć na czytelność. Skup się na dostarczeniu wartości dla czytelników. Unikaj powielania treści z innych źródeł i staraj się tworzyć oryginalne i interesujące artykuły. Podziel treść na krótkie akapity i używaj nagłówków i podnagłówków, aby ułatwić czytelnikom nawigację po artykule.
+   *
+   * Pamiętaj, aby nagłówki i podnagłówki w treści bloga były umieszczane jako Heading 2, oraz Heading 3 Każdy nagłówek H2 powinien zawierać odpowiednie słowo kluczowe, które jest związane z treścią danego segmentu artykułu. Pomaga to zarówno czytelnikom, jak i wyszukiwarkom zrozumieć, o czym będzie mówić dany fragment tekstu. Pamiętaj, aby nagłówków H2 nie było więcej niż 3, a nagłówków H3 nie więcej niż 6. H4 do H6 – dowolna ilość.
+   *
+   * Stosuj zróżnicowaną długość artykułów, ale postaraj się dostarczyć wystarczającą ilość informacji, aby rzetelnie omówić temat. Optymalnie artykuły powinny zawierać 4000 znaków ze spacjami, ale nie mniej niż 2000.
+   *
+   * Pamiętaj aby linki otwierały się w nowym oknie (target=”_blank”).
+   */
   content: RichText;
-  /** Upload or select a cover image to set as your Featured Image */
+  /** Zdjęcie powinno ściśle wiązać się z treścią artykułu. Staraj się wybrać grafikę, która doskonale oddaje temat i treść tekstu. Zdjęcie powinno pasować do ogólnego stylu i estetyki Twojego bloga oraz innych zdjęć. Wybieraj obrazy, które podkreślają unikalność i charakter Twojej marki.  */
   coverImage: Asset;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
-  /** What is the published date you would like to show for this post? */
   date: Scalars['Date'];
   /** Get the document in other stages */
   documentInStages: Array<Post>;
-  /** Add a short excerpt to summarize this post */
+  /** Krótki opis lub wprowadzenie do treści artykułu, który ma za zadanie zainteresować czytelników i zachęcić ich do dalszego czytania. Upewnij się, że w opisie zawarte są najważniejsze informacje i główne punkty omawiane w artykule. Staraj się przekazać esencję treści w zwięzły sposób. Opis powinien być krótki i zwięzły, zazwyczaj nie przekraczający kilku zdań. Powinien on zawierać około 160 znaków. Upewnij się, że opis odpowiada tematowi artykułu i jest spójny z jego treścią. */
   excerpt?: Maybe<Scalars['String']>;
   /** List of Post versions */
   history: Array<Version>;
@@ -1468,10 +1475,11 @@ export type Post = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
+  /** Unikalny adres URL danego postu. W tym wypadku jest automatycznie generowany na podstawie tytułu. */
   slug?: Maybe<Scalars['String']>;
   /** System stage field */
   stage: Stage;
-  /** Name your blog post! */
+  /** Pamiętaj, że tytuł to pierwsza rzecz, którą użytkownicy zobaczą w wynikach wyszukiwania, dlatego ważne jest, aby był atrakcyjny i odpowiednio zoptymalizowany pod kątem SEO. Tytuł powinien być krótki, zwięzły i łatwy do zrozumienia. Unikaj zbytecznych słów, które nie dodają wartości do tytułu. Powinien on mieć nie więcej niż 70-80 znaków ze spacjami. Staraj się wyróżnić spośród konkurencji poprzez oryginalny tytuł, który przyciągnie uwagę czytelników. Znajdź słowo kluczowe, które jest najbardziej istotne dla treści Twojego wpisu.  */
   title: Scalars['String'];
   /** The time the document was updated */
   updatedAt: Scalars['DateTime'];
@@ -4456,7 +4464,7 @@ export type GetPostsPagesLazyQueryHookResult = ReturnType<typeof useGetPostsPage
 export type GetPostsPagesQueryResult = Apollo.QueryResult<GetPostsPagesQuery, GetPostsPagesQueryVariables>;
 export const GetPostsPaginationDocument = gql`
     query GetPostsPagination($first: Int, $skip: Int) {
-  posts(first: $first, skip: $skip) {
+  posts(first: $first, skip: $skip, orderBy: publishedAt_DESC) {
     id
     slug
     title
@@ -4499,7 +4507,7 @@ export type GetPostsPaginationLazyQueryHookResult = ReturnType<typeof useGetPost
 export type GetPostsPaginationQueryResult = Apollo.QueryResult<GetPostsPaginationQuery, GetPostsPaginationQueryVariables>;
 export const GetPostsDocument = gql`
     query GetPosts {
-  posts {
+  posts(orderBy: createdAt_DESC) {
     id
     slug
     title

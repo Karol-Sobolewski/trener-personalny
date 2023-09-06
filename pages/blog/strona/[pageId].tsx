@@ -85,7 +85,7 @@ export default function BlogPage({
 
 export const getStaticPaths = async () => {
     return {
-      paths: Array.from({ length: 10 }, (_, i) => i + 1).map((i) => {
+      paths: Array.from({ length: 3 }, (_, i) => i + 1).map((i) => {
           return {
           params: {
             pageId: i.toString(),
