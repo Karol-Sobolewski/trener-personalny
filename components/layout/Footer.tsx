@@ -264,7 +264,7 @@ export default function Footer() {
 
                   <address className="-mt-0.5 flex-1 not-italic text-gray-700 hover:text-gray-700/75">
                     <a
-                      href="https://maps.app.goo.gl/SbazARXSfZMtg9Hn7"
+                      href="https://www.google.com/maps/place/Radek+Senski+-+Trener/@52.2279447,21.0073828,15z/data=!4m2!3m1!1s0x0:0x1ed62dc649e93369?sa=X&ved=2ahUKEwjo1bTz7ayDAxUUcfEDHYOADCsQ_BJ6BAhDEAA"
                       target="_blank"
                       title="Sprawdź na mapie"
                     >

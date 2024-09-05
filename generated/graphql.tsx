@@ -852,6 +852,7 @@ export enum EntityTypeName {
 export type EntityWhereInput = {
   /** The ID of an object */
   id: Scalars['ID'];
+  locale?: InputMaybe<Locale>;
   stage: Stage;
   /** The Type name of an object */
   typename: EntityTypeName;
